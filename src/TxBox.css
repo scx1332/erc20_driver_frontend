@@ -32,7 +32,13 @@ div.tx-created {
     font-size: 10px;
     font-weight: bold;
 }
-
+div.tx-broadcast {
+    left: 100px;
+    top: 20px;
+    position: absolute;
+    font-size: 10px;
+    font-weight: bold;
+}
 div.tx-confirmed {
     left: 200px;
     top: 20px;
@@ -42,40 +48,46 @@ div.tx-confirmed {
 }
 div.tx-from {
     left: 0px;
-    top: 60px;
+    top: 90px;
     position: absolute;
     font-size: 10px;
     font-weight: bold;
 }
 div.tx-to {
     left: 240px;
-    top: 60px;
+    top: 90px;
     position: absolute;
     font-size: 10px;
     font-weight: bold;
 }
 div.tx-method {
     left: 240px;
-    top: 70px;
+    top: 100px;
     position: absolute;
     font-size: 10px;
 }
 div.tx-nonce {
     left: 0px;
-    top: 70px;
+    top: 100px;
     position: absolute;
     font-size: 10px;
 }
 div.tx-gas-limit {
     left: 70px;
-    top: 70px;
+    top: 100px;
+    position: absolute;
+    font-size: 10px;
+}
+div.tx-fee {
+    left: 140px;
+    top: 100px;
     position: absolute;
     font-size: 10px;
 }
 
 div.tx-hash {
     left: 0px;
-    top: 45px;
+    top: 75px;
     position: absolute;
     font-size: 10px;
     font-weight: bold;

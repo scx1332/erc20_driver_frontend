@@ -2,7 +2,8 @@ import React from "react";
 import {DateTime, Interval} from "luxon";
 
 interface DateBoxProps {
-    date: string
+    date: string,
+    title: string
 }
 
 const DateBox = (props: DateBoxProps) => {
@@ -32,6 +33,7 @@ const DateBox = (props: DateBoxProps) => {
 
 
         return (<div className={"date-container"}>
+            <div>{props.title}</div>
             <div className={"date-date"}>{luxonDate.toFormat("yyyy-LL-dd HH:mm:ss")}</div>
             <div className={"date-ago"}>{message}</div>
         </div>)
