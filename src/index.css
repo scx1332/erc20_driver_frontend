@@ -9,3 +9,7 @@ code {
 .border {
   border: 1px solid black;
 }
+
+.div {
+  background-color: #333333;
+}
