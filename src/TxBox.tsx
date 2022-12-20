@@ -14,15 +14,18 @@ const TxBox = (props: TransactionProps) => {
         let feePaidWei = BigInt(tx.feePaid) / BigInt(1000000000);
         feePaid = Number(feePaidWei) / 1000000000;
     }
-    return (<div className={"tx-container"}>
+    return (<div className={"tx-container-wrapper"}>
+            <div className={"tx-container"}>
         <div className={"tx-id"}>db id: {tx.id}</div>
         <div className={"chain-id"}>chain id: {tx.chainId}</div>
+        <div className={"tx-method"}>{tx.method}</div>
         <div className={"tx-created"}>
             <DateBox title="queued" date={tx.createdDate}/>
         </div>
-        <div className={"tx-from"}>{tx.fromAddr}</div>
-        <div className={"tx-to"}>{tx.toAddr}</div>
-        <div className={"tx-method"}>{tx.method}</div>
+        <div className={"tx-from"}>
+            <a title={"from"} href={"http://145.239.69.80:4000/address/" + tx.fromAddr}>{tx.fromAddr}</a><span> - </span>
+                <a title={"to"} href={"http://145.239.69.80:4000/address/" + tx.toAddr}>{tx.toAddr}</a></div>
+
         <div className={"tx-broadcast"}>
             <DateBox title="broadcast" date={tx.broadcastDate}/>
         </div>
@@ -30,8 +33,7 @@ const TxBox = (props: TransactionProps) => {
             <DateBox title="confirmed" date={tx.confirmDate}/>
         </div>
         {tx.txHash?
-            (<div className={"tx-hash"}>
-            <a href={"http://145.239.69.80:4000/tx/" + tx.txHash}>{tx.txHash}</a>
+            (<div className={"tx-hash"}><span>Tx hash: </span><a href={"http://145.239.69.80:4000/tx/" + tx.txHash}>{tx.txHash}</a>
         </div> ): <div className={"tx-hash tx-hash-unknown"}>Tx hash: N/A</div>}
         {tx.nonce?
             (<div className={"tx-nonce"}>
@@ -55,7 +57,7 @@ const TxBox = (props: TransactionProps) => {
         <div className={"tx-error"}>
             {"test error"}
         </div>
-    </div>)
+            </div></div>)
 }
 
 export default TxBox;

@@ -1,22 +1,36 @@
 import React from "react";
 import {DateTime, Interval} from "luxon";
+import "./DateBox.css"
 
 interface DateBoxProps {
-    date: string,
+    date: string | null,
     title: string
+}
+function render(title: string, date: string, msg: string, extraInfo: string) {
+    return (<div title={extraInfo} className={"date-container"}>
+        <div className={"date-container-title"}>{title}</div>
+        <div className={"date-container-date"}>{date}</div>
+        <div className={"date-container-msg"}>{msg}</div>
+    </div>)
 }
 
 const DateBox = (props: DateBoxProps) => {
     let dateNow = DateTime.now();
     let dateStr = props.date;
 
-    if (!dateStr) {
-        return <div className={"date-box"}>N/A</div>
+    let title = props.title;
+    let date = "N/A";
+    let msg = "-";
+    let extraInfo = "Date not yet available";
+
+
+    if (dateStr == null) {
+        return render(title, date, msg, extraInfo);
     }
 
     try {
         let luxonDate = DateTime.fromISO(dateStr);
-
+        let currentDate = DateTime.now();
 
         let interval = Interval.fromDateTimes(luxonDate, dateNow);
 
@@ -26,25 +40,22 @@ const DateBox = (props: DateBoxProps) => {
         } else if (interval.length('hours') > 3) {
             message = Math.floor(interval.length('hours')) + " hours ago";
         } else if (interval.length('minutes') > 3) {
-            message = Math.floor(interval.length('minutes')) + " minutes ago";
+            message = Math.floor(interval.length('minutes')) + " min. ago";
         } else {
-            message = Math.floor(interval.length('seconds')) + " seconds ago";
+            message = Math.floor(interval.length('seconds')) + " sec. ago";
         }
 
+        let dateMsg = luxonDate.toFormat("yyyy-LL-dd HH:mm:ss");
+        if (luxonDate.toFormat("yyyy-LL-dd") == currentDate.toFormat("yyyy-LL-dd")) {
+            dateMsg = luxonDate.toFormat("HH:mm:ss");
+        }
 
-        return (<div className={"date-container"}>
-            <div>{props.title}</div>
-            <div className={"date-date"}>{luxonDate.toFormat("yyyy-LL-dd HH:mm:ss")}</div>
-            <div className={"date-ago"}>{message}</div>
-        </div>)
+        extraInfo = "Iso date: " + luxonDate.toUTC().toFormat("yyyy-LL-dd HH:mm:ss");
+        return render(title, dateMsg, message, extraInfo);
+
     } catch (e) {
-        return (<div className={"date-container"}>
-            ERROR
-        </div>)
+        return render(title, "error", `${e}`, `${e}`);
     }
-
-
-
 }
 
 export default DateBox;

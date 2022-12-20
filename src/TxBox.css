@@ -1,103 +1,105 @@
+div.tx-container-wrapper {
+    font-size: 12px;
+}
+
 div.tx-container {
     background-color: #f0f0f0;
     border: 1px solid #d0d0d0;
-    padding: 10px;
-    margin: 5px;
+    padding: 1em;
+    margin: 0.5em;
     width: auto;
-    height: 100px;
+    height: 10em;
     position: relative;
+    font-size: 1em;
 }
 
 div.tx-id {
-    left: 0px;
-    top: 0px;
+    left: 0em;
+    top: 0em;
     position: absolute;
-    font-size: 10px;
+    font-size: 1.0em;
     font-weight: bold;
 }
 
 div.chain-id {
-    left: 100px;
-    top: 0px;
+    left: 10em;
+    top: 0em;
     position: absolute;
-    font-size: 10px;
+    font-size: 1.0em;
     font-weight: bold;
 }
 
 
 div.tx-created {
-    left: 0px;
-    top: 20px;
+    left: 0em;
+    top: 2em;
     position: absolute;
-    font-size: 10px;
-    font-weight: bold;
 }
 div.tx-broadcast {
-    left: 100px;
-    top: 20px;
+    left: 10em;
+    top: 2em;
     position: absolute;
-    font-size: 10px;
-    font-weight: bold;
 }
 div.tx-confirmed {
-    left: 200px;
-    top: 20px;
+    left: 20em;
+    top: 2em;
     position: absolute;
-    font-size: 10px;
-    font-weight: bold;
 }
 div.tx-from {
-    left: 0px;
-    top: 90px;
+    left: 0em;
+    top: 8em;
     position: absolute;
-    font-size: 10px;
+    font-size: 1em;
+}
+div.tx-from span {
     font-weight: bold;
 }
+
 div.tx-to {
-    left: 240px;
-    top: 90px;
+    left: 24em;
+    top: 8em;
     position: absolute;
-    font-size: 10px;
+    font-size: 1em;
     font-weight: bold;
 }
 div.tx-method {
-    left: 240px;
-    top: 100px;
+    left: 20em;
+    top: 0em;
     position: absolute;
-    font-size: 10px;
+    font-size: 1em;
 }
 div.tx-nonce {
-    left: 0px;
-    top: 100px;
+    left: 0em;
+    top: 10em;
     position: absolute;
-    font-size: 10px;
+    font-size: 1em;
 }
 div.tx-gas-limit {
-    left: 70px;
-    top: 100px;
+    left: 7em;
+    top: 10em;
     position: absolute;
-    font-size: 10px;
+    font-size: 1em;
 }
 div.tx-fee {
-    left: 140px;
-    top: 100px;
+    left: 15em;
+    top: 10em;
     position: absolute;
-    font-size: 10px;
+    font-size: 1em;
 }
 
 div.tx-hash {
-    left: 0px;
-    top: 75px;
+    left: 0em;
+    top: 6em;
     position: absolute;
-    font-size: 10px;
+    font-size: 1em;
     font-weight: bold;
 }
 
 div.tx-error {
     color: red;
-    bottom: 0px;
+    bottom: 0em;
     position: absolute;
-    font-size: 10px;
+    font-size: 1em;
     font-weight: bold;
 }
 

@@ -16,7 +16,7 @@ const Dashboard = () => {
         setTxCount(response_json);
     }
     const loadTxsNext = async () => {
-        const response = await fetch(`http://127.0.0.1:8080/transactions/next/5`);
+        const response = await fetch(`http://127.0.0.1:8080/transactions/next/2`);
         const response_json = await response.json();
         setNextTxs(response_json);
     }
