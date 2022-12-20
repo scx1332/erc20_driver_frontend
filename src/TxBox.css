@@ -1,15 +1,23 @@
 div.tx-container-wrapper {
     font-size: 12px;
+    position: relative;
+    height: 14em;
+}
+
+div.tx-transfers {
+    width: auto;
+    height: 12em;
+    width: 40em;
+    position: absolute;
+    font-size: 1em;
+    left: 42em;
 }
 
 div.tx-container {
-    background-color: #f0f0f0;
-    border: 1px solid #d0d0d0;
-    padding: 1em;
-    margin: 0.5em;
-    width: auto;
-    height: 10em;
-    position: relative;
+
+    height: 12em;
+    width: 42em;
+    position: absolute;
     font-size: 1em;
 }
 

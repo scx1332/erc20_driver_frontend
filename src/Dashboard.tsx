@@ -53,7 +53,10 @@ const Dashboard = () => {
     let nextTxsReversed = nextTxs?.txs.slice().reverse();
 
     function row(tx: any, i: any) {
-        return (<TxBox key={i} tx={tx}/>)
+        return (<div key={i}>
+            <TxBox tx={tx}/>
+            <hr/>
+        </div>)
     }
 
     return (
