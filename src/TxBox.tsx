@@ -4,13 +4,40 @@ import DateBox from "./DateBox";
 import TransfersBox from "./TransfersBox";
 
 interface TransactionProps {
-    tx: any
+    tx_id: number | null,
 }
 
 const TxBox = (props: TransactionProps) => {
+    let [tx, setTx] = React.useState(null);
 
-    let tx = props.tx;
+    const loadTxDetails = async () => {
+        if (props.tx_id) {
+            const response = await fetch(`http://127.0.0.1:8080/tx/${props.tx_id}`);
+            const response_json = await response.json();
+
+            setTx(response_json.tx);
+        }
+    }
+
+    const loadData = async () => {
+        for (let loopNo = 0; ; loopNo++) {
+            loadTxDetails().then(() => {
+            });
+            await new Promise(r => setTimeout(r, 2000));
+        }
+    }
+
+    React.useEffect(() => {
+        loadData().then(() => {
+        });
+    }, [props.tx_id])
+
+    if (tx == null) {
+        return (<div></div>)
+    }
+
     let feePaid: number | null = null;
+
     if (tx.feePaid) {
         let feePaidWei = BigInt(tx.feePaid) / BigInt(1000000000);
         feePaid = Number(feePaidWei) / 1000000000;

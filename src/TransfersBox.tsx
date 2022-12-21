@@ -19,7 +19,6 @@ const TransfersBox = (props: TransfersBoxProps) => {
     }
 
     React.useEffect(() => {
-        setTransfers(null);
         loadTransfers().then(() => {
         });
     }, [props.tx_id])
