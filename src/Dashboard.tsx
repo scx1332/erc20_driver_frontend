@@ -2,15 +2,15 @@ import React from "react"
 import './Dashboard.css';
 
 import TransactionFeed from "./TransactionFeed";
+import {useConfig} from "./ConfigProvider";
 
-const BACKEND_URL = "http://localhost:8080"
-const MAX_VISIBLE_TXS = 10;
 
 const Dashboard = () => {
+    const [config] = useConfig();
     return (
         <div>
-            <h1>Dashboard</h1>
-            <div><TransactionFeed/></div>
+            <h1>Dashboard {}</h1>
+            {config ? (<div><TransactionFeed/></div>) : ("Loading config...")}
         </div>
     )
 }
