@@ -123,7 +123,6 @@ const Dashboard = () => {
         <div>
             <h1>Dashboard</h1>
             <div>Displaying {displayTxCount} transactions out of {txCount?.txDone} finished transaction and {txCount?.txQueued} queued</div>
-            <button onClick={loadNextClick}>Load new</button>
 
             {(nextTxsReversed != null) ? (
                 <div className={"tx-33"}>
