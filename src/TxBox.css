@@ -22,7 +22,7 @@ div.tx-container {
 }
 
 div.tx-id {
-    left: 0em;
+    left: 2em;
     top: 0em;
     position: absolute;
     font-size: 1.0em;
@@ -102,13 +102,44 @@ div.tx-hash {
     font-size: 1em;
     font-weight: bold;
 }
+div.tx-processing {
+    top: 0em;
+    left: 0em;
 
-div.tx-error {
-    color: red;
-    bottom: 0em;
     position: absolute;
     font-size: 1em;
-    font-weight: bold;
+}
+
+div.tx-message {
+    top: 11.5em;
+    left: 2em;
+    position: absolute;
+    font-size: 1em;
+}
+.tx-ok-icon {
+    width: 1.8em;
+    height: 1.8em;
+    color: green;
+}
+.tx-wait-icon {
+    width: 1.8em;
+    height: 1.8em;
+    color: blue;
+}
+.tx-error-icon {
+    width: 1.8em;
+    height: 1.8em;
+    color: red;
+}
+
+.tx-loading {
+    width: 1.8em;
+    height: 1.8em;
+    color: blue;
+}
+
+div.tx-message span.tx-message-error {
+    color: red;
 }
 
 

@@ -15,5 +15,6 @@ div.tx-33 {
 }
 
 div.tx-wrapper {
-    transition: all 0.5s;
+    transition: all 1.0s;
+    overflow: hidden;
 }
