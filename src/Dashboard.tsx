@@ -2,15 +2,40 @@ import React from "react"
 import './Dashboard.css';
 
 import TransactionFeed from "./TransactionFeed";
-import {useConfig} from "./ConfigProvider";
-
+import {BACKEND_URL, useConfig} from "./ConfigProvider";
+import { Routes, Route, Link } from "react-router-dom";
 
 const Dashboard = () => {
     const [config] = useConfig();
     return (
         <div>
-            <h1>Dashboard {}</h1>
-            {config ? (<div><TransactionFeed/></div>) : ("Loading config...")}
+            {config ? (<div>
+                <div className="top-header">
+                    <div className="top-header-title">
+                        Erc20 Payments Driver Dashboard
+                    </div>
+                    <div className="top-header-navigation">
+                        <Link to="/">Main</Link>
+                        <Link to="/feed">Transaction feed</Link>
+                        <Link to="/allowances">Allowances</Link>
+                    </div>
+                </div>
+                <div className="main-content">
+                    <Routes>
+                        <Route path="/" element={<div>
+                            <div>
+                                <div className={"padding"}>
+
+                                    <p>Connected to payment driver API url: <a href={BACKEND_URL}>{BACKEND_URL}</a></p>
+                                    <textarea style={{width: 800, height: 500}} readOnly={true} value={JSON.stringify(config, null, 2)}/>
+                                </div>
+                            </div>
+                        </div>}></Route>
+                        <Route path="feed" element={<TransactionFeed/>}></Route>
+                        <Route path="allowances" element={<TransactionFeed/>}></Route>
+                    </Routes>
+                </div>
+            </div>) : ("Loading config...")}
         </div>
     )
 }

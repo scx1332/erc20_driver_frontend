@@ -3,13 +3,20 @@ import ReactDOM from 'react-dom/client';
 import './index.css';
 import Dashboard from "./Dashboard";
 import {ConfigProvider} from "./ConfigProvider";
+import {BrowserRouter} from "react-router-dom";
+import { Routes, Route, Link } from "react-router-dom";
 
 const root = ReactDOM.createRoot(document.getElementById('root'));
 root.render(
   <React.StrictMode>
       <ConfigProvider>
           <div>
-              <Dashboard/>
+              <BrowserRouter>
+                  <Routes>
+                      <Route path="/*" element={<Dashboard/>} />
+                  </Routes>
+              </BrowserRouter>
+
           </div>
       </ConfigProvider>
   </React.StrictMode>
