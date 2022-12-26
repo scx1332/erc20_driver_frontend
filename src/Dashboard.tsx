@@ -4,6 +4,7 @@ import './Dashboard.css';
 import TransactionFeed from "./TransactionFeed";
 import {BACKEND_URL, useConfig} from "./ConfigProvider";
 import {Routes, Route, Link} from "react-router-dom";
+import Accounts from "./Accounts";
 
 const Dashboard = () => {
     const [config] = useConfig();
@@ -17,6 +18,7 @@ const Dashboard = () => {
                     <div className="top-header-navigation">
                         <Link to="/">Main</Link>
                         <Link to="/feed">Transaction feed</Link>
+                        <Link to="/accounts">Accounts</Link>
                         <Link to="/allowances">Allowances</Link>
                     </div>
                 </div>
@@ -25,7 +27,6 @@ const Dashboard = () => {
                         <Route path="/" element={<div>
                             <div>
                                 <div className={"padding"}>
-
                                     <p>Connected to payment driver API url: <a href={BACKEND_URL}>{BACKEND_URL}</a></p>
                                     <textarea style={{width: 800, height: 500}} readOnly={true}
                                               value={JSON.stringify(config, null, 2)}/>
@@ -33,7 +34,8 @@ const Dashboard = () => {
                             </div>
                         </div>}></Route>
                         <Route path="feed" element={<TransactionFeed/>}></Route>
-                        <Route path="allowances" element={<TransactionFeed/>}></Route>
+                        <Route path="accounts" element={<Accounts/>}></Route>
+                        <Route path="allowances" element={<div>TO DO </div>}></Route>
                     </Routes>
                 </div>
             </div>) : ("Loading config...")}
