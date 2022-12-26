@@ -3,7 +3,7 @@ import './Dashboard.css';
 
 import TransactionFeed from "./TransactionFeed";
 import {BACKEND_URL, useConfig} from "./ConfigProvider";
-import { Routes, Route, Link } from "react-router-dom";
+import {Routes, Route, Link} from "react-router-dom";
 
 const Dashboard = () => {
     const [config] = useConfig();
@@ -27,7 +27,8 @@ const Dashboard = () => {
                                 <div className={"padding"}>
 
                                     <p>Connected to payment driver API url: <a href={BACKEND_URL}>{BACKEND_URL}</a></p>
-                                    <textarea style={{width: 800, height: 500}} readOnly={true} value={JSON.stringify(config, null, 2)}/>
+                                    <textarea style={{width: 800, height: 500}} readOnly={true}
+                                              value={JSON.stringify(config, null, 2)}/>
                                 </div>
                             </div>
                         </div>}></Route>

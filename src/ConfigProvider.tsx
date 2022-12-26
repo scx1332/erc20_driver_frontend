@@ -12,7 +12,7 @@ export const ConfigProvider = ({children}) => {
         (async () => {
             let response = await fetch(`${BACKEND_URL}/config`);
             let response_json = await response.json();
-            setConfig(response_json);
+            setConfig(response_json.config);
         })();
     }, []);
 

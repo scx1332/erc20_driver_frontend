@@ -1,14 +1,13 @@
-import React from "react"
+import React, {useCallback} from "react"
 import './TransactionFeed.css';
 import TxBox from "./TxBox";
 
-const BACKEND_URL = "http://localhost:8080"
 const MAX_VISIBLE_TXS = 10;
 
 const TransactionFeed = () => {
     const [nextRefresh, setNextRefresh] = React.useState(0);
     const [nextTxsReversed, _setNextTxsReversed] = React.useState(null);
-    function setNextTxsReversed(txs: any) {
+    const setNextTxsReversed = useCallback((txs: any) => {
         if (txs != null) {
             if (txs.length >= MAX_VISIBLE_TXS) {
                 txs[MAX_VISIBLE_TXS - 1].opacity = 0;
@@ -18,19 +17,17 @@ const TransactionFeed = () => {
         } else {
             _setNextTxsReversed(txs);
         }
-    }
+    }, []);
 
     const [txCount, setTxCount] = React.useState(null)
 
-
-
-
-    const loadTxCount = async () => {
+    const loadTxCount = useCallback(async () => {
         const response = await fetch(`http://127.0.0.1:8080/transactions/count`);
         const response_json = await response.json();
         setTxCount(response_json);
-    }
-    const loadTxsFeed = async () => {
+    }, []);
+
+    const loadTxsFeed = useCallback(async () => {
         const response = await fetch(`http://127.0.0.1:8080/transactions/feed/5/2`);
         const response_json = await response.json();
         let reversed = response_json.txs.slice().reverse().map((tx: any) => {return {"key": tx.tx_id, "data": tx}});
@@ -45,13 +42,12 @@ const TransactionFeed = () => {
                 let nextTx = entry.data;
                 let foundIdx = -1;
                 for (let idx = 0; idx < nextTxsReversed.length; idx++) {
-                    if (nextTxsReversed[idx].data.id == nextTx.id) {
+                    if (nextTxsReversed[idx].data.id === nextTx.id) {
                         foundIdx = idx;
                         break;
                     }
                 }
-                if (foundIdx == -1) {
-                    console.log(`next id: ${nextTx.id}`);
+                if (foundIdx === -1) {
                     entry.opacity = 0.0;
                     entry.maxHeight = 0;
                     txToAdd.push(entry);
@@ -70,35 +66,22 @@ const TransactionFeed = () => {
                 setNextTxsReversed(newReversed.slice());
             }
         }
-    }
-    const loadNextClick = async () => {
-        loadTxsFeed().then(() => {
+    }, [nextTxsReversed, setNextTxsReversed]);
 
-        });
-    }
-
-    const loadDashboard = async () => {
+    const loadDashboard = useCallback(async () => {
         const futFeed = loadTxsFeed();
         const futCount = loadTxCount();
         await Promise.all([futFeed, futCount]);
         await new Promise(r => setTimeout(r, 5000));
-    }
+    }, [loadTxsFeed, loadTxCount]);
 
 
     React.useEffect(() => {
-        console.log("useEffect");
+        console.log("Refreshing dashboard...");
         loadDashboard().then(() => {
             setNextRefresh(nextRefresh + 1);
         });
-    }, [])
-
-    React.useEffect(() => {
-        if (nextRefresh > 0) {
-            loadDashboard().then(() => {
-                setNextRefresh(nextRefresh + 1);
-            });
-        }
-    }, [nextRefresh])
+    }, [loadDashboard, nextRefresh])
 
     function row(tx: any) {
         let opacity = tx.opacity ?? 1.0;

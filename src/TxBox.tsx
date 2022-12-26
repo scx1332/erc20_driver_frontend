@@ -5,6 +5,7 @@ import TransfersBox from "./TransfersBox";
 import {Circles} from 'react-loading-icons'
 import {BiTime, BiError} from "react-icons/bi";
 import {GiConfirmed} from "react-icons/gi";
+import Web3 from "web3";
 
 
 interface TransactionProps {
@@ -42,11 +43,10 @@ const TxBox = (props: TransactionProps) => {
         return (<div className={"tx-container-wrapper"}></div>)
     }
 
-    let feePaid: number | null = null;
+    let feePaid: string | null = null;
 
     if (tx.feePaid) {
-        let feePaidWei = BigInt(tx.feePaid) / BigInt(1000000000);
-        feePaid = Number(feePaidWei) / 1000000000;
+        feePaid = Web3.utils.fromWei(tx.feePaid, "ether");
     }
 
     function SkipTx() {
