@@ -6,6 +6,7 @@ import {BACKEND_URL, useConfig} from "./ConfigProvider";
 import {Routes, Route, Link} from "react-router-dom";
 import Accounts from "./Accounts";
 import AllowanceBoxDesignTime from "./AllowanceBoxDesignTime";
+import Allowances from "./Allowances";
 
 const Dashboard = () => {
     const [config] = useConfig();
@@ -36,7 +37,7 @@ const Dashboard = () => {
                         </div>}></Route>
                         <Route path="feed" element={<TransactionFeed/>}></Route>
                         <Route path="accounts" element={<Accounts/>}></Route>
-                        <Route path="allowances" element={<div>TO DO </div>}></Route>
+                        <Route path="allowances" element={<Allowances/>}></Route>
                         <Route path="design_allowance_box" element={<AllowanceBoxDesignTime></AllowanceBoxDesignTime>}></Route>
                     </Routes>
                 </div>
