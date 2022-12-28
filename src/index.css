@@ -1,4 +1,5 @@
 body {
+  font-family: Helvetica,Arial,sans-serif;
 }
 
 code {
@@ -13,3 +14,16 @@ code {
 .div {
   background-color: #333333;
 }
+
+a:link,
+a:visited,
+a:hover,
+a:active {
+  text-decoration: none;
+  color: #00008B;
+}
+a:hover {
+  color: #1434B4;
+  background-color: #eeeeee;
+}
+

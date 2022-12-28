@@ -16,7 +16,7 @@ const AllowanceBoxDesignTime = () => {
     };
 
     let allowance2: any = {
-        "allowance": "115792089237316195423570985008687907853269984665640564039457584007913129639935",
+        "allowance": "12200000000000000000",
         "chainId": 987789,
         "confirmDate": "2022-12-23T13:37:47.827436700Z",
         "error": null,
