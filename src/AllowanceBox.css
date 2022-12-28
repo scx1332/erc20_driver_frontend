@@ -1,0 +1,46 @@
+div.allowance-box {
+    border: 1px solid blue;
+    padding: 5px;
+}
+
+div.allowance-box-body {
+    position: relative;
+    height: 20em;
+    width: 100%;
+}
+
+div.allowance-box-body div.allowance-id {
+    position: absolute;
+    top: 0em;
+}
+
+div.allowance-box-body div.allowance-chain-id {
+    position: absolute;
+    top: 1em;
+}
+
+div.allowance-box-body div.allowance-confirm-date {
+    position: absolute;
+    left: 8em;
+    top: 0em;
+}
+
+div.allowance-box-body div.allowance-tx-id {
+    position: absolute;
+    top: 3em;
+}
+
+div.allowance-box-body div.allowance-spender {
+    position: absolute;
+    top: 4em;
+}
+
+div.allowance-box-body div.allowance-token-addr {
+    position: absolute;
+    top: 5em;
+}
+
+div.allowance-box-body div.allowance-allowance {
+    position: absolute;
+    top: 6em;
+}
