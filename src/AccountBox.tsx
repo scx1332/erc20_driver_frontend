@@ -15,12 +15,18 @@ const AccountBox = (props: AccountBoxProps) => {
         setAccount(response_json);
     }, []);
 
+    React.useEffect(() => {
+        loadAccountDetails().then();
+
+    }, []);
+
     return (
         <div className={"account-box"}>
             <div className={"account-box-header"}>
                 Account {props.account}
             </div>
             <div className={"account-box-body"}>
+                {JSON.stringify(account)}
 
             </div>
         </div>
