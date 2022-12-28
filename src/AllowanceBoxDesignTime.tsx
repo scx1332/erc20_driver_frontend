@@ -18,13 +18,13 @@ const AllowanceBoxDesignTime = () => {
     let allowance2: any = {
         "allowance": "12200000000000000000",
         "chainId": 987789,
-        "confirmDate": "2022-12-23T13:37:47.827436700Z",
+        "confirmDate": null,
         "error": null,
         "feePaid": null,
-        "id": 9,
-        "owner": "0x001066290077e38f222cc6009c0c7a91d5192303",
+        "id": 10,
+        "owner": "0x101066290077e28f222cc6009c0c7a91d5192303",
         "spender": "0xbcfe9736a4f5bf2e43620061ff3001ea0d003c0f",
-        "tokenAddr": "0xec9f23c207018a444f9351df3d7937f609870667",
+        "tokenAddr": "0xef9f23c207018a444f9351df3d7937f609870667",
         "txId": null
     };
 

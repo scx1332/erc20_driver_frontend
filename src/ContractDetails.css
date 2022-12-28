@@ -1,0 +1,23 @@
+div.contract-details-contract {
+    display: inline-block;
+    background-color: #FEFEFE;
+    padding: 0.1em 0.15em 0.0em 0.0em;
+    color: #00008B;
+}
+div.contract-details-contract:hover {
+    display: inline-block;
+    background-color: #EEEEFE;
+    color: #1434B4;
+}
+
+div.contract-details-contract-name {
+    display: inline-block;
+    vertical-align: top;
+    padding-top: 0.1em;
+}
+
+.contract-details-contract-icon {
+    width: 1.2em;
+    height: 1.2em;
+    display: inline-block;
+}
