@@ -36,9 +36,6 @@ const TransfersBox = (props: TransfersBoxProps) => {
         distinctReceivers.add(transfers.transfers[i].receiverAddr);
     }
     let sumNum = sum.toString();
-    function row(transfer: any, i: any) {
-        return (<TransferBox key={i} transfer={transfer}/>)
-    }
     if (transferCount === 0) {
         return (<div className={"transfers-box"}>
             <div className={"transfers-box-header"}>No transfers related to this transactions</div>
@@ -58,6 +55,10 @@ const TransfersBox = (props: TransfersBoxProps) => {
         tokenSymbol = config.chainSetup[chainId].currencyGlmSymbol;
     }
     let amount = Web3.utils.fromWei(sumNum, "ether");
+
+    const row = (transfer: any, i: any) => {
+        return (<TransferBox key={i} transfer={transfer} tokenSymbol={tokenSymbol}/>)
+    }
 
     return (<div className={"transfers-box"}>
         <div className={"transfers-box-header"}>{transferCount} transfers to {distinctReceivers.size} distinct addresses for a sum of {amount} {tokenSymbol}: </div>

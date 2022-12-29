@@ -80,18 +80,28 @@ const TxBox = (props: TransactionProps) => {
     }
     return (
         <div className={"tx-container-wrapper"}>
+            <div className={"tx-container-header"}></div>
 
             <div className={"tx-container"}>
                 <div className={"tx-id"}>db id: {tx.id}</div>
                 <div className={"chain-id"}><ChainDetails chainId={tx.chainId}/></div>
-                <div className={"tx-method"}>{tx.method}</div>
+                <div className={"tx-method"} title={"method"}>{tx.method}</div>
                 <div className={"tx-created"}>
                     <DateBox title="queued" date={tx.createdDate}/>
                 </div>
                 <div className={"tx-from"}>
                     <ContractDetails chainId={tx.chainId} contractAddress={tx.fromAddr}/>
+                </div>
+                <div className={"tx-from-descr"}>
+                    From
+                </div>
+                <div className={"tx-to"}>
                     <ContractDetails chainId={tx.chainId} contractAddress={tx.toAddr}/>
                 </div>
+                <div className={"tx-to-descr"}>
+                    To
+                </div>
+
                 <div className={"tx-broadcast"}>
                     <DateBox title="broadcast" date={tx.broadcastDate}/>
                 </div>
@@ -99,8 +109,8 @@ const TxBox = (props: TransactionProps) => {
                     <DateBox title="confirmed" date={tx.confirmDate}/>
                 </div>
                 {tx.txHash?
-                    (<div className={"tx-hash"}><span>Tx hash: </span><TransactionDetails chainId={tx.chainId} transactionHash={tx.txHash}/>
-                </div> ): <div className={"tx-hash tx-hash-unknown"}>Tx hash: N/A</div>}
+                    (<div className={"tx-hash"}><span></span><TransactionDetails chainId={tx.chainId} transactionHash={tx.txHash}/>
+                </div> ): <div className={"tx-hash tx-hash-unknown"}>Tx hash - not available</div>}
                 {tx.nonce?
                 (<div className={"tx-nonce"}>
                     nonce: {tx.nonce}

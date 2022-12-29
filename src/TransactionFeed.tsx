@@ -89,7 +89,6 @@ const TransactionFeed = () => {
 
         return (<div key={tx.data.id} style={{opacity: opacity, maxHeight: maxHeight}} className={"tx-wrapper"}>
             <TxBox tx_id={tx.data.id} tx={tx.data} />
-            <hr/>
         </div>)
     }
 

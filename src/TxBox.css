@@ -3,9 +3,13 @@ div.tx-container-wrapper {
     position: relative;
     height: 14em;
 }
+div.tx-container-header {
+    background-color: black;
+    height: 0.1em;
+}
 
 div.tx-transfers {
-    width: auto;
+    top: 0.7em;
     height: 12em;
     width: 40em;
     position: absolute;
@@ -14,7 +18,7 @@ div.tx-transfers {
 }
 
 div.tx-container {
-
+    top: 0.5em;
     height: 12em;
     width: 50em;
     position: absolute;
@@ -23,7 +27,7 @@ div.tx-container {
 
 div.tx-id {
     left: 2em;
-    top: 0em;
+    top: 0.35em;
     position: absolute;
     font-size: 1.0em;
     font-weight: bold;
@@ -31,7 +35,7 @@ div.tx-id {
 
 div.chain-id {
     left: 10em;
-    top: 0em;
+    top: 0.1em;
     position: absolute;
     font-size: 1.0em;
     font-weight: bold;
@@ -43,65 +47,91 @@ div.tx-created {
     top: 2em;
     position: absolute;
 }
+div.tx-created div {
+    font-size: 0.9em;
+}
+
+
 div.tx-broadcast {
     left: 10em;
     top: 2em;
     position: absolute;
 }
+div.tx-broadcast div {
+    font-size: 0.9em;
+}
+
 div.tx-confirmed {
     left: 20em;
     top: 2em;
     position: absolute;
 }
-div.tx-from {
-    left: 0em;
-    top: 8em;
-    position: absolute;
-    font-size: 1em;
-}
-div.tx-from span {
-    font-weight: bold;
+div.tx-confirmed div {
+    font-size: 0.9em;
 }
 
-div.tx-to {
-    left: 24em;
-    top: 8em;
-    position: absolute;
-    font-size: 1em;
-    font-weight: bold;
-}
 div.tx-method {
     left: 20em;
-    top: 0em;
+    top: 0.35em;
     position: absolute;
     font-size: 1em;
 }
+div.tx-hash {
+    left: 0em;
+    top: 5.8em;
+    position: absolute;
+    font-size: 1em;
+}
+
 div.tx-nonce {
     left: 0em;
-    top: 10em;
+    top: 7.1em;
     position: absolute;
     font-size: 1em;
 }
 div.tx-gas-limit {
-    left: 7em;
-    top: 10em;
+    left: 7.0em;
+    top: 7.1em;
     position: absolute;
     font-size: 1em;
 }
 div.tx-fee {
-    left: 15em;
-    top: 10em;
+    left: 16.5em;
+    top: 7.1em;
+    position: absolute;
+    font-size: 1em;
+}
+div.tx-from {
+    left: 3.5em;
+    top: 8.5em;
+    position: absolute;
+    font-size: 1em;
+}
+div.tx-from-descr {
+    left: 0em;
+    top: 8.75em;
     position: absolute;
     font-size: 1em;
 }
 
-div.tx-hash {
-    left: 0em;
-    top: 6em;
+div.tx-from-descr span {
+    font-size: 0.8em;
+}
+
+div.tx-to {
+    left: 3.5em;
+    top: 10.1em;
     position: absolute;
     font-size: 1em;
-    font-weight: bold;
+    font-family: Consolas, monaco, monospace;
 }
+div.tx-to-descr {
+    left: 0em;
+    top: 10.3em;
+    position: absolute;
+    font-size: 1em;
+}
+
 div.tx-processing {
     top: 0em;
     left: 0em;

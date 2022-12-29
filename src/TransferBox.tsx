@@ -6,18 +6,22 @@ import ChainDetails from "./ChainDetails";
 import ContractDetails from "./ContractDetails";
 
 interface TransferBoxProps {
-    transfer: any
+    transfer: any;
+    tokenSymbol: string;
 }
 
 const TransferBox = (props: TransferBoxProps) => {
     let transfer = props.transfer;
     return (
         <div className={"transfer-box"}>
-            <div className={"transfer-id"}>{transfer.id}
+            <div className={"transfer-id"}>
+                {transfer.id}
             </div>
-            <div className={"transfer-receiver"}><ContractDetails contractAddress={transfer.receiverAddr} chainId={transfer.chainId}/>
+            <div className={"transfer-receiver"}>
+                <ContractDetails contractAddress={transfer.receiverAddr} chainId={transfer.chainId}/>
             </div>
-            <div className={"transfer-token"}>{Web3.utils.fromWei(transfer.tokenAmount, "ether")}
+            <div className={"transfer-token"}>
+                {Web3.utils.fromWei(transfer.tokenAmount, "ether")} {props.tokenSymbol}
             </div>
         </div>)
 }

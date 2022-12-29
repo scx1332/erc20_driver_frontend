@@ -1,5 +1,5 @@
 div.transfer-box {
-    background-color: #eee;
+    border-top: 1px solid black;
     position: relative;
     height: 1.5em;
     margin-bottom: 0.5em;
@@ -12,12 +12,12 @@ div.transfer-id {
 }
 div.transfer-receiver {
     left: 5em;
-    top: 0.2em;
+    top: 0.0em;
     position: absolute;
     font-size: 1.0em;
 }
 div.transfer-token {
-    left: 30em;
+    left: 31em;
     top: 0.2em;
     position: absolute;
     font-size: 1.0em;
