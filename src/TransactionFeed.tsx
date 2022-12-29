@@ -83,7 +83,7 @@ const TransactionFeed = () => {
         });
     }, [loadDashboard, nextRefresh])
 
-    function row(tx: any) {
+    const row = (tx: any) => {
         let opacity = tx.opacity ?? 1.0;
         let maxHeight = tx.maxHeight ?? 200;
 

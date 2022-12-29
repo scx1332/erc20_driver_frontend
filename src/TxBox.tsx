@@ -90,13 +90,13 @@ const TxBox = (props: TransactionProps) => {
                     <DateBox title="queued" date={tx.createdDate}/>
                 </div>
                 <div className={"tx-from"}>
-                    <ContractDetails chainId={tx.chainId} contractAddress={tx.fromAddr}/>
+                    <ContractDetails isAddress={true} chainId={tx.chainId} contractAddress={tx.fromAddr}/>
                 </div>
                 <div className={"tx-from-descr"}>
                     From
                 </div>
                 <div className={"tx-to"}>
-                    <ContractDetails chainId={tx.chainId} contractAddress={tx.toAddr}/>
+                    <ContractDetails isAddress={false} chainId={tx.chainId} contractAddress={tx.toAddr}/>
                 </div>
                 <div className={"tx-to-descr"}>
                     To

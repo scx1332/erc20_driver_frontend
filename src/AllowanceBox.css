@@ -24,7 +24,7 @@ div.allowance-box-body div.allowance-spender-descr {
     top: 1.2em;
 }
 div.allowance-box-body div.allowance-spender-descr span {
-    font-size: 0.8em;
+    font-size: 0.9em;
 }
 
 div.allowance-box-body div.allowance-owner {
@@ -38,7 +38,7 @@ div.allowance-box-body div.allowance-owner-descr {
     top: 4.2em;
 }
 div.allowance-box-body div.allowance-owner-descr span {
-    font-size: 0.8em;
+    font-size: 0.9em;
 }
 
 div.allowance-box-body div.allowance-token-addr {
@@ -54,7 +54,7 @@ div.allowance-box-body div.allowance-allowance {
 }
 
 div.allowance-box-body div.allowance-allowance span {
-    font-size: 0.8em;
+    font-size: 0.9em;
 }
 
 div.allowance-box-body div.allowance-chain-id {
@@ -66,12 +66,12 @@ div.allowance-box-body div.allowance-confirm-date {
     position: absolute;
     left: 0em;
     top: 4em;
-    font-size: 0.8em;
+    font-size: 0.9em;
 }
 
 div.allowance-box-body div.allowance-tx-id {
     position: absolute;
-    top: 6.5em;
+    top: 7.0em;
 }
 
 

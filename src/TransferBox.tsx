@@ -1,8 +1,6 @@
 import React from "react";
 import "./TransferBox.css"
-import {BACKEND_URL} from "./ConfigProvider";
 import Web3 from "web3";
-import ChainDetails from "./ChainDetails";
 import ContractDetails from "./ContractDetails";
 
 interface TransferBoxProps {
@@ -14,13 +12,13 @@ const TransferBox = (props: TransferBoxProps) => {
     let transfer = props.transfer;
     return (
         <div className={"transfer-box"}>
-            <div className={"transfer-id"}>
+            <div className={"transfer-id"} title={"Transfer db id"}>
                 {transfer.id}
             </div>
-            <div className={"transfer-receiver"}>
-                <ContractDetails contractAddress={transfer.receiverAddr} chainId={transfer.chainId}/>
+            <div className={"transfer-receiver"} title={"Receiver address"}>
+                <ContractDetails contractAddress={transfer.receiverAddr} chainId={transfer.chainId} isAddress={"Receiver id"}/>
             </div>
-            <div className={"transfer-token"}>
+            <div className={"transfer-token"}  title={"Tokens transferred"}>
                 {Web3.utils.fromWei(transfer.tokenAmount, "ether")} {props.tokenSymbol}
             </div>
         </div>)

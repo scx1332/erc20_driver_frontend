@@ -7,6 +7,7 @@ import "./ContractDetails.css";
 interface ContractDetailsProps {
     chainId: string | null,
     contractAddress: string | null,
+    isAddress: boolean | string,
 }
 
 const ContractDetails = (props: ContractDetailsProps) => {
@@ -18,19 +19,23 @@ const ContractDetails = (props: ContractDetailsProps) => {
         return (<span>No {chainId} in config</span>)
     }
     let contractString = props.contractAddress;
-    let isMultiContractAddress = false;
-    let isGlmContractAddress = false;
+    let contractTitle = `contract id: ${props.contractAddress}`;
+    if (props.isAddress) {
+        contractTitle = `address id: ${props.contractAddress}`;
+    }
+    //todo - fix this hack in more elegant way
+    if (props.isAddress === "Receiver id") {
+        contractTitle = `Receiver id: ${props.contractAddress}`;
+    }
     if (chainSetup.multiContractAddress === props.contractAddress) {
-        isMultiContractAddress = true;
         contractString = "Multi payment contract";
     }
     if (chainSetup.glmAddress === props.contractAddress) {
-        isGlmContractAddress = true;
         contractString = `${chainSetup.currencyGlmSymbol} token`;
     }
 
     return (
-        <a href={chainSetup.blockExplorerUrl} title={`contract id: ${props.contractAddress}`}>
+        <a href={chainSetup.blockExplorerUrl} title={contractTitle}>
             <div className={"contract-details-contract"}>
                 <FiExternalLink className={"contract-details-contract-icon"}/>
 

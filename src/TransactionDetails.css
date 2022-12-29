@@ -7,7 +7,7 @@ div.transaction-details-transaction {
 }
 div.transaction-details-transaction:hover {
     display: inline-block;
-    background-color: #EEEEFE;
+    background-color: #f2f2ff;
     color: #1434B4;
 }
 

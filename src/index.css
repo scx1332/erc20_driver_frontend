@@ -1,5 +1,6 @@
 body {
   font-family: Helvetica,Arial,sans-serif;
+  font-size: 14px;
 }
 
 code {
@@ -24,6 +25,6 @@ a:active {
 }
 a:hover {
   color: #1434B4;
-  background-color: #eeeeee;
+  background-color: #f2f2ff;
 }
 
