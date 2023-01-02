@@ -7,6 +7,7 @@ import {Routes, Route, Link} from "react-router-dom";
 import Accounts from "./Accounts";
 import AllowanceBoxDesignTime from "./AllowanceBoxDesignTime";
 import Allowances from "./Allowances";
+import Balance from "./Balance";
 
 const Dashboard = () => {
     const [config] = useConfig();
@@ -22,6 +23,7 @@ const Dashboard = () => {
                         <Link to="/feed">Transaction feed</Link>
                         <Link to="/accounts">Accounts</Link>
                         <Link to="/allowances">Allowances</Link>
+                        <Link to="/balance/0x0000000600000006000000060000000600000006">Balance</Link>
                     </div>
                 </div>
                 <div className="main-content">
@@ -38,6 +40,7 @@ const Dashboard = () => {
                         <Route path="feed" element={<TransactionFeed/>}></Route>
                         <Route path="accounts" element={<Accounts/>}></Route>
                         <Route path="allowances" element={<Allowances/>}></Route>
+                        <Route path="balance/:account" element={<Balance/>}></Route>
                         <Route path="design_allowance_box" element={<AllowanceBoxDesignTime></AllowanceBoxDesignTime>}></Route>
                     </Routes>
                 </div>
