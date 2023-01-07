@@ -1,6 +1,7 @@
 import React, {useCallback} from "react";
 import AllowanceBox from "./AllowanceBox";
 import {BACKEND_URL} from "./ConfigProvider";
+import Allowance from "./model/Allowance";
 
 interface AccountBoxProps {
     account: string | null,
@@ -21,7 +22,7 @@ const AccountBox = (props: AccountBoxProps) => {
 
     }, [loadAccountDetails]);
 
-    function allowanceRow(allowance: any, idx: number) {
+    function allowanceRow(allowance: Allowance, idx: number) {
         return (<div key={idx}>
             <AllowanceBox allowance={allowance} />
         </div>)
