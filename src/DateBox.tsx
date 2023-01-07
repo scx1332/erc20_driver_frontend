@@ -15,12 +15,12 @@ function render(title: string, date: string, msg: string, extraInfo: string) {
 }
 
 const DateBox = (props: DateBoxProps) => {
-    let dateNow = DateTime.now();
-    let dateStr = props.date;
+    const dateNow = DateTime.now();
+    const dateStr = props.date;
 
-    let title = props.title;
-    let date = "N/A";
-    let msg = "-";
+    const title = props.title;
+    const date = "N/A";
+    const msg = "-";
     let extraInfo = "Date not yet available";
 
 
@@ -29,10 +29,10 @@ const DateBox = (props: DateBoxProps) => {
     }
 
     try {
-        let luxonDate = DateTime.fromISO(dateStr);
-        let currentDate = DateTime.now();
+        const luxonDate = DateTime.fromISO(dateStr);
+        const currentDate = DateTime.now();
 
-        let interval = Interval.fromDateTimes(luxonDate, dateNow);
+        const interval = Interval.fromDateTimes(luxonDate, dateNow);
 
         let message;
         if (interval.length('days') > 3) {

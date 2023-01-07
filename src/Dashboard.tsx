@@ -10,7 +10,7 @@ import Allowances from "./Allowances";
 import Balance from "./Balance";
 
 const Dashboard = () => {
-    const [config] = useConfig();
+    const config = useConfig();
     return (
         <div>
             {config ? (<div>

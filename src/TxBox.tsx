@@ -41,7 +41,7 @@ const TxBox = (props: TransactionProps) => {
         });
     }, [props.tx_id])*/
 
-    let tx = props.tx;
+    const tx = props.tx;
     if (tx == null) {
         return (<div className={"tx-container-wrapper"}></div>)
     }

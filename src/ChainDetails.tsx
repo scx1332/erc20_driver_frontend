@@ -9,19 +9,20 @@ interface ChainDetailsProps {
 }
 
 const ChainDetails = (props: ChainDetailsProps) => {
-    const [config] = useConfig();
+    const config = useConfig();
 
-    let chain_id = parseInt(props.chainId);
-    let chainSetup: ChainSetup = config.chainSetup[chain_id];
+    const chainId = parseInt(props.chainId);
+    const chainSetup: ChainSetup = config.chainSetup[chainId];
     if (!chainSetup) {
-        return (<span>No {chain_id} in config</span>)
+        return (<span>No {chainId} in config</span>)
     }
 
     return (
         <a href={chainSetup.blockExplorerUrl} title={`chain id: ${props.chainId}`}>
             <div className={"chain-details-chain"}>
-                <FiExternalLink className={"chain-details-chain-icon"}/> <div className={"chain-details-chain-name"}>{chainSetup.chainName}</div>
-        </div>
+                <FiExternalLink className={"chain-details-chain-icon"}/>
+                <div className={"chain-details-chain-name"}>{chainSetup.chainName}</div>
+            </div>
         </a>
     )
 }

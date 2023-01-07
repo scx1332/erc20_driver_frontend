@@ -2,7 +2,7 @@ import React from "react";
 import AllowanceBox from "./AllowanceBox";
 
 const AllowanceBoxDesignTime = () => {
-    let allowance1: any = {
+    const allowance1: any = {
         "allowance": "115792089237316195423570985008687907853269984665640564039457584007913129639935",
         "chainId": 987789,
         "confirmDate": "2022-12-23T13:37:47.827436700Z",
@@ -15,7 +15,7 @@ const AllowanceBoxDesignTime = () => {
         "txId": null
     };
 
-    let allowance2: any = {
+    const allowance2: any = {
         "allowance": "12200000000000000000",
         "chainId": 987789,
         "confirmDate": null,

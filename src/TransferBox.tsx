@@ -9,7 +9,7 @@ interface TransferBoxProps {
 }
 
 const TransferBox = (props: TransferBoxProps) => {
-    let transfer = props.transfer;
+    const transfer = props.transfer;
     return (
         <div className={"transfer-box"}>
             <div className={"transfer-id"} title={"Transfer db id"}>

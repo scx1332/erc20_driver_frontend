@@ -11,7 +11,7 @@ interface TransfersBoxProps {
 
 const TransfersBox = (props: TransfersBoxProps) => {
     const [transfers, setTransfers] = useState(null);
-    const [config] = useConfig();
+    const config = useConfig();
 
     React.useEffect(() => {
         console.log("Loading transfers for tx " + props.tx_id);
@@ -24,18 +24,19 @@ const TransfersBox = (props: TransfersBoxProps) => {
         }
 
         loadTransfers().then(() => {
+            console.log("Loaded transfers for tx " + props.tx_id);
         });
     }, [props.tx_id])
 
 
-    let transferCount = transfers?.transfers.length ?? 0;
+    const transferCount = transfers?.transfers.length ?? 0;
     let sum = BigInt(0);
-    let distinctReceivers = new Set();
+    const distinctReceivers = new Set();
     for (let i = 0; i < transferCount; i++) {
         sum += BigInt(transfers.transfers[i].tokenAmount);
         distinctReceivers.add(transfers.transfers[i].receiverAddr);
     }
-    let sumNum = sum.toString();
+    const sumNum = sum.toString();
     if (transferCount === 0) {
         return (<div className={"transfers-box"}>
             <div className={"transfers-box-header"}>No transfers related to this transactions</div>
@@ -43,8 +44,8 @@ const TransfersBox = (props: TransfersBoxProps) => {
             </div>
         </div>)
     }
-    let tokenAddr = transfers.transfers[0].tokenAddr;
-    let chainId = parseInt(transfers.transfers[0].chainId);
+    const tokenAddr = transfers.transfers[0].tokenAddr;
+    const chainId = parseInt(transfers.transfers[0].chainId);
     let tokenSymbol = "???";
 
     //console.log(config.chainSetup);
@@ -54,7 +55,7 @@ const TransfersBox = (props: TransfersBoxProps) => {
     else if (config.chainSetup[chainId].glmAddress === tokenAddr) {
         tokenSymbol = config.chainSetup[chainId].currencyGlmSymbol;
     }
-    let amount = fromWei(sumNum);
+    const amount = fromWei(sumNum);
 
     const row = (transfer: any, i: any) => {
         return (<TransferBox key={i} transfer={transfer} tokenSymbol={tokenSymbol}/>)

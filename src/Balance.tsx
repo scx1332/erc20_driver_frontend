@@ -7,7 +7,7 @@ import {DateTime} from "luxon";
 import BalanceEvent from "./model/BalanceEvent";
 import BalanceEntry from "./BalanceEntry";
 
-const Balance = (props: any) => {
+const Balance = () => {
 
     //const [account, setAccount] = React.useState(null);
     const {account} = useParams();
@@ -18,12 +18,12 @@ const Balance = (props: any) => {
         const response = await fetch(`${BACKEND_URL}/account/${account}/in`);
         const response_json = await response.json();
 
-        let chainTransfers: ChainTransfer[] = response_json.chainTransfers;
-        let transfersIn: TransferIn[] = response_json.transfersIn;
+        const chainTransfers: ChainTransfer[] = response_json.chainTransfers;
+        const transfersIn: TransferIn[] = response_json.transfersIn;
 
-        let events: BalanceEvent[] = [];
-        for (let chainTransfer of chainTransfers) {
-            let event: BalanceEvent = {
+        const events: BalanceEvent[] = [];
+        for (const chainTransfer of chainTransfers) {
+            const event: BalanceEvent = {
                 id: `chain_transfer_${chainTransfer.id}`,
                 date: DateTime.fromISO(chainTransfer.blockchainDate),
                 chainTransfer: chainTransfer,
@@ -33,8 +33,8 @@ const Balance = (props: any) => {
             }
             events.push(event);
         }
-        for (let transferIn of transfersIn) {
-            let event: BalanceEvent = {
+        for (const transferIn of transfersIn) {
+            const event: BalanceEvent = {
                 id: `transfer_in_${transferIn.id}`,
                 date: DateTime.fromISO(transferIn.requestedDate),
                 chainTransfer: null,
@@ -47,14 +47,14 @@ const Balance = (props: any) => {
         events.sort((a, b) => a.date.toMillis() - b.date.toMillis());
 
         //drop chain transfers before the first transfer in
-        let firstTransferIn = events.find(e => e.transferIn != null);
+        const firstTransferIn = events.find(e => e.transferIn != null);
         if (firstTransferIn != null) {
-            let firstTransferInIndex = events.indexOf(firstTransferIn);
-             events.splice(0, firstTransferInIndex);
+            const firstTransferInIndex = events.indexOf(firstTransferIn);
+            events.splice(0, firstTransferInIndex);
         }
 
         let balance = BigInt(0);
-        for (let event of events) {
+        for (const event of events) {
             balance += event.transferred;
             event.balance = balance;
         }

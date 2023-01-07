@@ -10,10 +10,10 @@ interface TransactionDetailsProps {
 }
 
 const TransactionDetails = (props: TransactionDetailsProps) => {
-    const [config] = useConfig();
+    const config = useConfig();
 
-    let chainId = parseInt(props.chainId);
-    let chainSetup: ChainSetup = config.chainSetup[chainId];
+    const chainId = parseInt(props.chainId);
+    const chainSetup: ChainSetup = config.chainSetup[chainId];
     if (!chainSetup) {
         return (<span>No {chainId} in config</span>)
     }

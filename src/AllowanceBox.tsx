@@ -12,10 +12,10 @@ interface AllowanceBoxProps {
 const AllowanceBox = (props: AllowanceBoxProps) => {
     //const [config] = useConfig();
 
-    let bn = BigInt(props.allowance.allowance);
-    let bnMin = BigInt("0x7FFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFF");
-    let all = fromWei(props.allowance.allowance);
-    let allowanceStr = (bn > bnMin) ? "Unlimited" : all;
+    const bn = BigInt(props.allowance.allowance);
+    const bnMin = BigInt("0x7FFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFF");
+    const all = fromWei(props.allowance.allowance);
+    const allowanceStr = (bn > bnMin) ? "Unlimited" : all;
 
 
     return (

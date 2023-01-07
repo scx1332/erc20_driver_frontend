@@ -1,7 +1,7 @@
 
 
 interface Allowance {
-    id: Number;
+    id: number;
 
 }
 

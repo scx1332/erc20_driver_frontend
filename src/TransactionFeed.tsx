@@ -30,16 +30,16 @@ const TransactionFeed = () => {
     const loadTxsFeed = useCallback(async () => {
         const response = await fetch(`http://127.0.0.1:8080/transactions/feed/5/2`);
         const response_json = await response.json();
-        let reversed = response_json.txs.slice().reverse().map((tx: any) => {return {"key": tx.tx_id, "data": tx}});
+        const reversed = response_json.txs.slice().reverse().map((tx: any) => {return {"key": tx.tx_id, "data": tx}});
 
         if (nextTxsReversed == null) {
             setNextTxsReversed(reversed);
             return;
         } else {
-            let nReversed = nextTxsReversed.slice();
-            let txToAdd = [];
-            for (let entry of reversed) {
-                let nextTx = entry.data;
+            const nReversed = nextTxsReversed.slice();
+            const txToAdd = [];
+            for (const entry of reversed) {
+                const nextTx = entry.data;
                 let foundIdx = -1;
                 for (let idx = 0; idx < nextTxsReversed.length; idx++) {
                     if (nextTxsReversed[idx].data.id === nextTx.id) {
@@ -56,10 +56,10 @@ const TransactionFeed = () => {
                 }
             }
             if (txToAdd.length > 0) {
-                let newReversed = [...txToAdd, ...nReversed];
+                const newReversed = [...txToAdd, ...nReversed];
                 setNextTxsReversed(newReversed);
                 await new Promise(r => setTimeout(r, 100));
-                for (let tx of newReversed) {
+                for (const tx of newReversed) {
                     tx.opacity = 1.0;
                     tx.maxHeight = 500;
                 }
@@ -84,8 +84,8 @@ const TransactionFeed = () => {
     }, [loadDashboard, nextRefresh])
 
     const row = (tx: any) => {
-        let opacity = tx.opacity ?? 1.0;
-        let maxHeight = tx.maxHeight ?? 200;
+        const opacity = tx.opacity ?? 1.0;
+        const maxHeight = tx.maxHeight ?? 200;
 
         return (<div key={tx.data.id} style={{opacity: opacity, maxHeight: maxHeight}} className={"tx-wrapper"}>
             <TxBox tx_id={tx.data.id} tx={tx.data} />
@@ -94,7 +94,7 @@ const TransactionFeed = () => {
 
     let displayTxCount = 0;
     if (nextTxsReversed) {
-        for (let tx of nextTxsReversed) {
+        for (const tx of nextTxsReversed) {
             if (tx.opacity === undefined || tx.opacity > 0) {
                 displayTxCount++;
             }
