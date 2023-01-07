@@ -1,11 +1,10 @@
 body {
-  font-family: Helvetica,Arial,sans-serif;
+  font-family: Helvetica, Arial, sans-serif;
   font-size: 14px;
 }
 
 code {
-  font-family: source-code-pro, Menlo, Monaco, Consolas, 'Courier New',
-    monospace;
+  font-family: source-code-pro, Menlo, Monaco, Consolas, "Courier New", monospace;
 }
 
 .border {
@@ -21,10 +20,9 @@ a:visited,
 a:hover,
 a:active {
   text-decoration: none;
-  color: #00008B;
+  color: #00008b;
 }
 a:hover {
-  color: #1434B4;
+  color: #1434b4;
   background-color: #f2f2ff;
 }
-
