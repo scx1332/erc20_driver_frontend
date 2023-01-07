@@ -9,11 +9,12 @@ import ChainDetails from "./ChainDetails";
 import ContractDetails from "./ContractDetails";
 import TransactionDetails from "./TransactionDetails";
 import {fromWei} from "./common/Web3Utils";
+import Web3Transaction from "./model/Web3Transaction";
 
 
 interface TransactionProps {
     tx_id: number | null,
-    tx: any
+    tx: Web3Transaction
 }
 
 const TxBox = (props: TransactionProps) => {

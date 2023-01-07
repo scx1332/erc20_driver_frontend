@@ -5,14 +5,14 @@ import {FiExternalLink} from "react-icons/fi";
 import "./TransactionDetails.css";
 
 interface TransactionDetailsProps {
-    chainId: string | null,
+    chainId: string | number | null,
     transactionHash: string | null,
 }
 
 const TransactionDetails = (props: TransactionDetailsProps) => {
     const config = useConfig();
 
-    const chainId = parseInt(props.chainId);
+    const chainId = (typeof props.chainId === "string")? parseInt(props.chainId) : props.chainId;
     const chainSetup: ChainSetup = config.chainSetup[chainId];
     if (!chainSetup) {
         return (<span>No {chainId} in config</span>)

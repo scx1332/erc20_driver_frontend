@@ -1,6 +1,7 @@
 import React, {useCallback, useEffect} from "react";
 import {BACKEND_URL} from "./ConfigProvider";
 import AllowanceBox from "./AllowanceBox";
+import Allowance from "./model/Allowance";
 
 
 const Allowances = () => {
@@ -13,7 +14,7 @@ const Allowances = () => {
     }, []);
 
 
-    function row(allowance: any, i: any) {
+    function row(allowance: Allowance, i: number) {
         return (<AllowanceBox key={i} allowance={allowance}/>)
     }
 

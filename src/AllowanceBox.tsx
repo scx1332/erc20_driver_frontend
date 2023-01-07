@@ -4,9 +4,10 @@ import DateBox from "./DateBox";
 import ChainDetails from "./ChainDetails";
 import ContractDetails from "./ContractDetails";
 import {fromWei} from "./common/Web3Utils";
+import Allowance from "./model/Allowance";
 
 interface AllowanceBoxProps {
-    allowance: any | null,
+    allowance: Allowance | null,
 }
 
 const AllowanceBox = (props: AllowanceBoxProps) => {

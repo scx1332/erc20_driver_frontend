@@ -1,13 +1,20 @@
 import React, {useCallback} from "react"
 import './TransactionFeed.css';
 import TxBox from "./TxBox";
+import Web3Transaction from "./model/Web3Transaction";
 
 const MAX_VISIBLE_TXS = 10;
+
+interface Web3Entry {
+    data: Web3Transaction,
+    opacity: number,
+    maxHeight: number,
+}
 
 const TransactionFeed = () => {
     const [nextRefresh, setNextRefresh] = React.useState(0);
     const [nextTxsReversed, _setNextTxsReversed] = React.useState(null);
-    const setNextTxsReversed = useCallback((txs: any) => {
+    const setNextTxsReversed = useCallback((txs: Web3Entry[]) => {
         if (txs != null) {
             if (txs.length >= MAX_VISIBLE_TXS) {
                 txs[MAX_VISIBLE_TXS - 1].opacity = 0;
@@ -30,7 +37,7 @@ const TransactionFeed = () => {
     const loadTxsFeed = useCallback(async () => {
         const response = await fetch(`http://127.0.0.1:8080/transactions/feed/5/2`);
         const response_json = await response.json();
-        const reversed = response_json.txs.slice().reverse().map((tx: any) => {return {"key": tx.tx_id, "data": tx}});
+        const reversed = response_json.txs.slice().reverse().map((tx: Web3Transaction) => {return {"data": tx}});
 
         if (nextTxsReversed == null) {
             setNextTxsReversed(reversed);
@@ -83,7 +90,7 @@ const TransactionFeed = () => {
         });
     }, [loadDashboard, nextRefresh])
 
-    const row = (tx: any) => {
+    const row = (tx: Web3Entry) => {
         const opacity = tx.opacity ?? 1.0;
         const maxHeight = tx.maxHeight ?? 200;
 

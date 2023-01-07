@@ -13,7 +13,7 @@ const Accounts = () => {
     }, []);
 
 
-    function row(account: any, i: any) {
+    function row(account: string, i: number) {
         return (<AccountBox key={i} account={account}/>)
     }
 

@@ -5,7 +5,7 @@ import {FiExternalLink} from "react-icons/fi";
 import "./ContractDetails.css";
 
 interface ContractDetailsProps {
-    chainId: string | null,
+    chainId: number | string | null,
     contractAddress: string | null,
     isAddress: boolean | string,
 }
@@ -13,7 +13,7 @@ interface ContractDetailsProps {
 const ContractDetails = (props: ContractDetailsProps) => {
     const config = useConfig();
 
-    const chainId = parseInt(props.chainId);
+    const chainId = (typeof props.chainId === "string")? parseInt(props.chainId) : props.chainId;
     const chainSetup: ChainSetup = config.chainSetup[chainId];
     if (!chainSetup) {
         return (<span>No {chainId} in config</span>)

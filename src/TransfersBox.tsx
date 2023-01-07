@@ -3,6 +3,7 @@ import "./TransfersBox.css"
 import TransferBox from "./TransferBox";
 import {useConfig} from "./ConfigProvider";
 import {fromWei} from "./common/Web3Utils";
+import TokenTransfer from "./model/TokenTransfer";
 
 interface TransfersBoxProps {
     tx_id: number | null
@@ -57,7 +58,7 @@ const TransfersBox = (props: TransfersBoxProps) => {
     }
     const amount = fromWei(sumNum);
 
-    const row = (transfer: any, i: any) => {
+    const row = (transfer: TokenTransfer, i: number) => {
         return (<TransferBox key={i} transfer={transfer} tokenSymbol={tokenSymbol}/>)
     }
 

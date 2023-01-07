@@ -5,13 +5,13 @@ import {FiExternalLink} from "react-icons/fi";
 import "./ChainDetails.css";
 
 interface ChainDetailsProps {
-    chainId: string | null,
+    chainId: number | string | null,
 }
 
 const ChainDetails = (props: ChainDetailsProps) => {
     const config = useConfig();
 
-    const chainId = parseInt(props.chainId);
+    const chainId = (typeof props.chainId === "string")? parseInt(props.chainId) : props.chainId;
     const chainSetup: ChainSetup = config.chainSetup[chainId];
     if (!chainSetup) {
         return (<span>No {chainId} in config</span>)
