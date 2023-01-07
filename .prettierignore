@@ -2,5 +2,4 @@ node_modules/
 dist/
 build/
 .eslintrc.js
-.prettierrc.js
 package-lock.json
