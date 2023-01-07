@@ -1,8 +1,6 @@
 import React, {useCallback} from "react";
 import AllowanceBox from "./AllowanceBox";
 import {BACKEND_URL} from "./ConfigProvider";
-import {Simulate} from "react-dom/test-utils";
-import load = Simulate.load;
 
 interface AccountBoxProps {
     account: string | null,

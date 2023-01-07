@@ -1,8 +1,6 @@
 import React from "react";
 import "./AllowanceBox.css"
 import DateBox from "./DateBox";
-import {useConfig} from "./ConfigProvider";
-import ChainSetup from "./model/ChainSetup";
 import ChainDetails from "./ChainDetails";
 import ContractDetails from "./ContractDetails";
 import {fromWei} from "./common/Web3Utils";
@@ -12,17 +10,12 @@ interface AllowanceBoxProps {
 }
 
 const AllowanceBox = (props: AllowanceBoxProps) => {
-    const [config] = useConfig();
+    //const [config] = useConfig();
 
     let bn = BigInt(props.allowance.allowance);
     let bnMin = BigInt("0x7FFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFF");
     let all = fromWei(props.allowance.allowance);
-    let allowanceStr = "N/A";
-    if (bn > bnMin) {
-        allowanceStr = "Unlimited";
-    } else {
-        allowanceStr = all;
-    }
+    let allowanceStr = (bn > bnMin) ? "Unlimited" : all;
 
 
     return (

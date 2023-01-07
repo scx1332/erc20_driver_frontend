@@ -1,5 +1,4 @@
-import React, {useCallback, useEffect} from "react";
-import AccountBox from "./AccountBox";
+import React, {useCallback} from "react";
 import {useParams} from "react-router";
 import {BACKEND_URL} from "./ConfigProvider";
 import ChainTransfer from "./model/ChainTransfer";

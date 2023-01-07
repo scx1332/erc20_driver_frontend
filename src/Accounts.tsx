@@ -1,9 +1,6 @@
 import React, {useCallback, useEffect} from "react";
-import {Simulate} from "react-dom/test-utils";
 import {BACKEND_URL} from "./ConfigProvider";
-import TransferBox from "./TransferBox";
 import AccountBox from "./AccountBox";
-
 
 
 const Accounts = () => {
