@@ -1,8 +1,8 @@
 import ChainSetup from "./ChainSetup";
 
 interface PaymentDriverConfig {
-  id: number;
+    id: number;
 
-  chainSetup: { [key: number]: ChainSetup };
+    chainSetup: { [key: number]: ChainSetup };
 }
 export default PaymentDriverConfig;

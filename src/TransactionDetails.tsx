@@ -5,28 +5,28 @@ import { FiExternalLink } from "react-icons/fi";
 import "./TransactionDetails.css";
 
 interface TransactionDetailsProps {
-  chainId: string | number | null;
-  transactionHash: string | null;
+    chainId: string | number | null;
+    transactionHash: string | null;
 }
 
 const TransactionDetails = (props: TransactionDetailsProps) => {
-  const config = useConfig();
+    const config = useConfig();
 
-  const chainId = typeof props.chainId === "string" ? parseInt(props.chainId) : props.chainId;
-  const chainSetup: ChainSetup = config.chainSetup[chainId];
-  if (!chainSetup) {
-    return <span>No {chainId} in config</span>;
-  }
+    const chainId = typeof props.chainId === "string" ? parseInt(props.chainId) : props.chainId;
+    const chainSetup: ChainSetup = config.chainSetup[chainId];
+    if (!chainSetup) {
+        return <span>No {chainId} in config</span>;
+    }
 
-  return (
-    <a href={chainSetup.blockExplorerUrl} title={`Transaction hash: ${props.transactionHash}`}>
-      <div className={"transaction-details-transaction"}>
-        <FiExternalLink className={"transaction-details-transaction-icon"} />
+    return (
+        <a href={chainSetup.blockExplorerUrl} title={`Transaction hash: ${props.transactionHash}`}>
+            <div className={"transaction-details-transaction"}>
+                <FiExternalLink className={"transaction-details-transaction-icon"} />
 
-        <div className={"transaction-details-transaction-name"}>{props.transactionHash}</div>
-      </div>
-    </a>
-  );
+                <div className={"transaction-details-transaction-name"}>{props.transactionHash}</div>
+            </div>
+        </a>
+    );
 };
 
 export default TransactionDetails;
