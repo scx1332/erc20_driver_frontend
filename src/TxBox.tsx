@@ -5,10 +5,10 @@ import TransfersBox from "./TransfersBox";
 import {Circles} from 'react-loading-icons'
 import {BiTime, BiError} from "react-icons/bi";
 import {GiConfirmed} from "react-icons/gi";
-import Web3 from "web3";
 import ChainDetails from "./ChainDetails";
 import ContractDetails from "./ContractDetails";
 import TransactionDetails from "./TransactionDetails";
+import {fromWei} from "./common/Web3Utils";
 
 
 interface TransactionProps {
@@ -49,7 +49,7 @@ const TxBox = (props: TransactionProps) => {
     let feePaid: string | null = null;
 
     if (tx.feePaid) {
-        feePaid = Web3.utils.fromWei(tx.feePaid, "ether");
+        feePaid = fromWei(tx.feePaid);
     }
 
     function SkipTx() {

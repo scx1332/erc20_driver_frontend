@@ -1,11 +1,11 @@
 import React from "react";
 import "./AllowanceBox.css"
-import Web3 from "web3";
 import DateBox from "./DateBox";
 import {useConfig} from "./ConfigProvider";
 import ChainSetup from "./model/ChainSetup";
 import ChainDetails from "./ChainDetails";
 import ContractDetails from "./ContractDetails";
+import {fromWei} from "./common/Web3Utils";
 
 interface AllowanceBoxProps {
     allowance: any | null,
@@ -16,7 +16,7 @@ const AllowanceBox = (props: AllowanceBoxProps) => {
 
     let bn = BigInt(props.allowance.allowance);
     let bnMin = BigInt("0x7FFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFF");
-    let all = Web3.utils.fromWei(props.allowance.allowance, 'ether');
+    let all = fromWei(props.allowance.allowance);
     let allowanceStr = "N/A";
     if (bn > bnMin) {
         allowanceStr = "Unlimited";

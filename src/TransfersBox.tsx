@@ -2,7 +2,7 @@ import React, {useState} from "react"
 import "./TransfersBox.css"
 import TransferBox from "./TransferBox";
 import {useConfig} from "./ConfigProvider";
-import Web3 from "web3";
+import {fromWei} from "./common/Web3Utils";
 
 interface TransfersBoxProps {
     tx_id: number | null
@@ -54,7 +54,7 @@ const TransfersBox = (props: TransfersBoxProps) => {
     else if (config.chainSetup[chainId].glmAddress === tokenAddr) {
         tokenSymbol = config.chainSetup[chainId].currencyGlmSymbol;
     }
-    let amount = Web3.utils.fromWei(sumNum, "ether");
+    let amount = fromWei(sumNum);
 
     const row = (transfer: any, i: any) => {
         return (<TransferBox key={i} transfer={transfer} tokenSymbol={tokenSymbol}/>)
