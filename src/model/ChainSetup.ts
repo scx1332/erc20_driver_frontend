@@ -13,7 +13,7 @@ interface ChainSetup {
     priorityFee: string;
     skipMultiContractCheck: boolean;
     transactionTimeout: number;
-    blockExplorerUrl: string | null;
+    blockExplorerUrl: string;
 }
 
 export default ChainSetup;

@@ -1,6 +1,6 @@
 interface TokenTransfer {
     id: number;
-    chainId: number;
+    chainId: number | string;
     txId: number;
     fromAddress: string;
     receiverAddr: string;

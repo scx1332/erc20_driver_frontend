@@ -1,8 +1,15 @@
 import React, { createContext, useContext, useEffect, useState } from "react";
 import PaymentDriverConfig from "./model/PaymentDriverConfig";
 
-export const ConfigContext = createContext(null);
-export const useConfig = () => useContext<PaymentDriverConfig | null>(ConfigContext);
+export const ConfigContext = createContext<PaymentDriverConfig | null>(null);
+export const useConfigOrNull = () => useContext<PaymentDriverConfig | null>(ConfigContext);
+export const useConfig = () => {
+    const value = useConfigOrNull();
+    if (value == null) {
+        throw new Error("Config not available");
+    }
+    return value;
+}
 export const BACKEND_URL = "http://localhost:8080";
 
 interface Props {

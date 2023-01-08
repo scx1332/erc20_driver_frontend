@@ -5,7 +5,7 @@ import { FiExternalLink } from "react-icons/fi";
 import "./TransactionDetails.css";
 
 interface TransactionDetailsProps {
-    chainId: string | number | null;
+    chainId: string | number;
     transactionHash: string | null;
 }
 

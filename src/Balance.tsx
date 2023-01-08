@@ -11,7 +11,7 @@ const Balance = () => {
     //const [account, setAccount] = React.useState(null);
     const { account } = useParams();
     //const [payments, setPayments] = React.useState(null);
-    const [events, setEvents] = React.useState(null);
+    const [events, setEvents] = React.useState<BalanceEvent[] | null>(null);
 
     const loadAccountDetails = useCallback(async () => {
         const response = await fetch(`${BACKEND_URL}/account/${account}/in`);

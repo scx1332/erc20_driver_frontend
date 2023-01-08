@@ -3,8 +3,12 @@ import { BACKEND_URL } from "./ConfigProvider";
 import AllowanceBox from "./AllowanceBox";
 import Allowance from "./model/Allowance";
 
+interface GetAllowancesResponse {
+    allowances: Allowance[];
+}
+
 const Allowances = () => {
-    const [allowances, setAllowances] = React.useState(null);
+    const [allowances, setAllowances] = React.useState<GetAllowancesResponse | null>(null);
 
     const loadAllowances = useCallback(async () => {
         const response = await fetch(`${BACKEND_URL}/allowances`);

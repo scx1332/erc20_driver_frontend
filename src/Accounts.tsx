@@ -1,9 +1,9 @@
 import React, { useCallback, useEffect } from "react";
 import { BACKEND_URL } from "./ConfigProvider";
 import AccountBox from "./AccountBox";
-
+import SenderAccounts from "./model/SenderAccounts";
 const Accounts = () => {
-    const [accounts, setAccounts] = React.useState(null);
+    const [accounts, setAccounts] = React.useState<SenderAccounts | null>(null);
 
     const loadTxCount = useCallback(async () => {
         const response = await fetch(`${BACKEND_URL}/accounts`);

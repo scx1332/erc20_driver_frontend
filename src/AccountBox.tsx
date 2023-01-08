@@ -2,13 +2,14 @@ import React, { useCallback } from "react";
 import AllowanceBox from "./AllowanceBox";
 import { BACKEND_URL } from "./ConfigProvider";
 import Allowance from "./model/Allowance";
+import AccountDetails from "./model/AccountDetails";
 
 interface AccountBoxProps {
     account: string | null;
 }
 
 const AccountBox = (props: AccountBoxProps) => {
-    const [account, setAccount] = React.useState(null);
+    const [account, setAccount] = React.useState<AccountDetails | null>(null);
 
     const loadAccountDetails = useCallback(async () => {
         const response = await fetch(`${BACKEND_URL}/account/${props.account}`);

@@ -2,6 +2,7 @@ import React, { useCallback } from "react";
 import "./TransactionFeed.css";
 import TxBox from "./TxBox";
 import Web3Transaction from "./model/Web3Transaction";
+import TxCount from "./model/TxCount";
 
 const MAX_VISIBLE_TXS = 10;
 
@@ -13,7 +14,7 @@ interface Web3Entry {
 
 const TransactionFeed = () => {
     const [nextRefresh, setNextRefresh] = React.useState(0);
-    const [nextTxsReversed, _setNextTxsReversed] = React.useState(null);
+    const [nextTxsReversed, _setNextTxsReversed] = React.useState<Web3Entry[] | null>(null);
     const setNextTxsReversed = useCallback((txs: Web3Entry[]) => {
         if (txs != null) {
             if (txs.length >= MAX_VISIBLE_TXS) {
@@ -26,7 +27,7 @@ const TransactionFeed = () => {
         }
     }, []);
 
-    const [txCount, setTxCount] = React.useState(null);
+    const [txCount, setTxCount] = React.useState<TxCount | null>(null);
 
     const loadTxCount = useCallback(async () => {
         const response = await fetch(`http://127.0.0.1:8080/transactions/count`);

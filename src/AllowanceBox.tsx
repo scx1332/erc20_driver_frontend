@@ -12,6 +12,9 @@ interface AllowanceBoxProps {
 
 const AllowanceBox = (props: AllowanceBoxProps) => {
     //const [config] = useConfig();
+    if (props.allowance == null) {
+        return <div>Unknown allowance</div>;
+    }
 
     const bn = BigInt(props.allowance.allowance);
     const bnMin = BigInt("0x7FFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFF");

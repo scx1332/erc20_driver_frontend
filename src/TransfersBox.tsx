@@ -9,8 +9,12 @@ interface TransfersBoxProps {
     tx_id: number | null;
 }
 
+interface TransferResponse {
+    transfers: TokenTransfer[];
+}
+
 const TransfersBox = (props: TransfersBoxProps) => {
-    const [transfers, setTransfers] = useState(null);
+    const [transfers, setTransfers] = useState<TransferResponse | null>(null);
     const config = useConfig();
 
     React.useEffect(() => {
@@ -28,7 +32,11 @@ const TransfersBox = (props: TransfersBoxProps) => {
         });
     }, [props.tx_id]);
 
-    const transferCount = transfers?.transfers.length ?? 0;
+    if (transfers === null) {
+        return <div>Loading...</div>;
+    }
+
+    const transferCount = transfers.transfers.length ?? 0;
     let sum = BigInt(0);
     const distinctReceivers = new Set();
     for (let i = 0; i < transferCount; i++) {
@@ -45,7 +53,9 @@ const TransfersBox = (props: TransfersBoxProps) => {
         );
     }
     const tokenAddr = transfers.transfers[0].tokenAddr;
-    const chainId = parseInt(transfers.transfers[0].chainId);
+
+    const chId = transfers.transfers[0].chainId;
+    const chainId = typeof chId === "string" ? parseInt(chId) : chId;
     let tokenSymbol = "???";
 
     //console.log(config.chainSetup);
