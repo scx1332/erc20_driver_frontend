@@ -2,7 +2,7 @@ import React from "react";
 import "./Dashboard.css";
 
 import TransactionFeed from "./TransactionFeed";
-import { BACKEND_URL, useConfig, useConfigOrNull } from "./ConfigProvider";
+import { BACKEND_URL, useConfigOrNull } from "./ConfigProvider";
 import { Routes, Route, Link } from "react-router-dom";
 import Accounts from "./Accounts";
 import AllowanceBoxDesignTime from "./AllowanceBoxDesignTime";
