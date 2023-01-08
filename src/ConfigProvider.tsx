@@ -9,7 +9,7 @@ export const useConfig = () => {
         throw new Error("Config not available");
     }
     return value;
-}
+};
 export const BACKEND_URL = "http://localhost:8080";
 
 interface Props {

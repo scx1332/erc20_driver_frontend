@@ -1,4 +1,3 @@
-
 interface SenderAccounts {
     publicAddr: string[];
 }

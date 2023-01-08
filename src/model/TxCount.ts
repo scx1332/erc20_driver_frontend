@@ -1,4 +1,3 @@
-
 interface TxCount {
     id: number;
     txDone: number;
