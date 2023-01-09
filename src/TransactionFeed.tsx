@@ -3,6 +3,7 @@ import "./TransactionFeed.css";
 import TxBox from "./TxBox";
 import Web3Transaction from "./model/Web3Transaction";
 import TxCount from "./model/TxCount";
+import {BACKEND_URL} from "./ConfigProvider";
 
 const MAX_VISIBLE_TXS = 10;
 
@@ -30,13 +31,13 @@ const TransactionFeed = () => {
     const [txCount, setTxCount] = React.useState<TxCount | null>(null);
 
     const loadTxCount = useCallback(async () => {
-        const response = await fetch(`http://127.0.0.1:8080/transactions/count`);
+        const response = await fetch(`${BACKEND_URL}/transactions/count`);
         const response_json = await response.json();
         setTxCount(response_json);
     }, []);
 
     const loadTxsFeed = useCallback(async () => {
-        const response = await fetch(`http://127.0.0.1:8080/transactions/feed/5/2`);
+        const response = await fetch(`${BACKEND_URL}/transactions/feed/5/2`);
         const response_json = await response.json();
         const reversed = response_json.txs
             .slice()

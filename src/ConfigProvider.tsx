@@ -10,7 +10,7 @@ export const useConfig = () => {
     }
     return value;
 };
-export const BACKEND_URL = "http://localhost:8080";
+export const BACKEND_URL = "http://localhost:8080/api";
 
 interface Props {
     children: React.ReactNode;
