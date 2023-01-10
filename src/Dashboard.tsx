@@ -46,15 +46,15 @@ const Dashboard = () => {
                                         </div>
                                     </div>
                                 }
-                            ></Route>
-                            <Route path="feed" element={<TransactionFeed />}></Route>
-                            <Route path="accounts" element={<Accounts />}></Route>
-                            <Route path="allowances" element={<Allowances />}></Route>
-                            <Route path="balance/:account" element={<Balance />}></Route>
+                            />
+                            <Route path="feed" element={<TransactionFeed />}/>
+                            <Route path="accounts" element={<Accounts />}/>
+                            <Route path="allowances" element={<Allowances />}/>
+                            <Route path="balance/:account" element={<Balance />}/>
                             <Route
                                 path="design_allowance_box"
-                                element={<AllowanceBoxDesignTime></AllowanceBoxDesignTime>}
-                            ></Route>
+                                element={<AllowanceBoxDesignTime/>}
+                            />
                         </Routes>
                     </div>
                 </div>
