@@ -1,20 +1,21 @@
 import React, { useCallback } from "react";
 import { useParams } from "react-router";
-import { BACKEND_URL } from "./ConfigProvider";
 import ChainTransfer from "./model/ChainTransfer";
 import TransferIn from "./model/TransferIn";
 import { DateTime } from "luxon";
 import BalanceEvent from "./model/BalanceEvent";
 import BalanceEntry from "./BalanceEntry";
+import {useConfig} from "./ConfigProvider";
 
 const Balance = () => {
     //const [account, setAccount] = React.useState(null);
     const { account } = useParams();
     //const [payments, setPayments] = React.useState(null);
     const [events, setEvents] = React.useState<BalanceEvent[] | null>(null);
+    const config = useConfig();
 
     const loadAccountDetails = useCallback(async () => {
-        const response = await fetch(`${BACKEND_URL}/account/${account}/in`);
+        const response = await fetch(`${config.backendUrl}/account/${account}/in`);
         const response_json = await response.json();
 
         const chainTransfers: ChainTransfer[] = response_json.chainTransfers;

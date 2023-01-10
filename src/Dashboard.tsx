@@ -2,7 +2,7 @@ import React from "react";
 import "./Dashboard.css";
 
 import TransactionFeed from "./TransactionFeed";
-import { BACKEND_URL, useConfigOrNull } from "./ConfigProvider";
+import { useConfigOrNull } from "./ConfigProvider";
 import { Routes, Route, Link } from "react-router-dom";
 import Accounts from "./Accounts";
 import AllowanceBoxDesignTime from "./AllowanceBoxDesignTime";
@@ -11,8 +11,15 @@ import Balance from "./Balance";
 
 const Dashboard = () => {
     const config = useConfigOrNull();
+    if (config == null) {
+        return <div>Loading...</div>;
+    }
+    if (typeof config === "string"){
+        return <div>{config}</div>;
+    }
     return (
         <div>
+
             {config ? (
                 <div>
                     <div className="top-header">
@@ -35,7 +42,7 @@ const Dashboard = () => {
                                             <div className={"padding"}>
                                                 <p>
                                                     Connected to payment driver API url:{" "}
-                                                    <a href={BACKEND_URL}>{BACKEND_URL}</a>
+                                                    <a href={config.backendUrl}>{config.backendUrl}</a>
                                                 </p>
                                                 <textarea
                                                     style={{ width: 800, height: 500 }}
@@ -59,7 +66,7 @@ const Dashboard = () => {
                     </div>
                 </div>
             ) : (
-                "Loading config..."
+                "Connecting to API..."
             )}
         </div>
     );

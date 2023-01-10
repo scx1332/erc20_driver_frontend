@@ -10,7 +10,7 @@ import ContractDetails from "./ContractDetails";
 import TransactionDetails from "./TransactionDetails";
 import { fromWei } from "./common/Web3Utils";
 import Web3Transaction from "./model/Web3Transaction";
-import {BACKEND_URL} from "./ConfigProvider";
+import {useConfig} from "./ConfigProvider";
 
 interface TransactionProps {
     tx_id: number | null;
@@ -19,6 +19,7 @@ interface TransactionProps {
 
 const TxBox = (props: TransactionProps) => {
     //let [tx, setTx] = React.useState(null);
+    const config = useConfig();
 
     /*const loadTxDetails = async () => {
         if (props.tx_id) {
@@ -54,7 +55,7 @@ const TxBox = (props: TransactionProps) => {
     }
 
     function SkipTx() {
-        fetch(`${BACKEND_URL}/tx/skip/${props.tx_id}`, { method: "POST" }).then((resp) => {
+        fetch(`${config.backendUrl}/tx/skip/${props.tx_id}`, { method: "POST" }).then((resp) => {
             console.log(resp);
         });
     }

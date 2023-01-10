@@ -1,8 +1,8 @@
 import React, { useCallback } from "react";
 import AllowanceBox from "./AllowanceBox";
-import { BACKEND_URL } from "./ConfigProvider";
 import Allowance from "./model/Allowance";
 import AccountDetails from "./model/AccountDetails";
+import {useConfig} from "./ConfigProvider";
 
 interface AccountBoxProps {
     account: string | null;
@@ -10,9 +10,10 @@ interface AccountBoxProps {
 
 const AccountBox = (props: AccountBoxProps) => {
     const [account, setAccount] = React.useState<AccountDetails | null>(null);
+    const config = useConfig();
 
     const loadAccountDetails = useCallback(async () => {
-        const response = await fetch(`${BACKEND_URL}/account/${props.account}`);
+        const response = await fetch(`${config.backendUrl}/account/${props.account}`);
         const response_json = await response.json();
         setAccount(response_json);
     }, [props.account]);

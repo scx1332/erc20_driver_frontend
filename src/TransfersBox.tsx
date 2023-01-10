@@ -1,7 +1,7 @@
 import React, { useState } from "react";
 import "./TransfersBox.css";
 import TransferBox from "./TransferBox";
-import {BACKEND_URL, useConfig} from "./ConfigProvider";
+import {useConfig} from "./ConfigProvider";
 import { fromWei } from "./common/Web3Utils";
 import TokenTransfer from "./model/TokenTransfer";
 
@@ -21,7 +21,7 @@ const TransfersBox = (props: TransfersBoxProps) => {
         console.log("Loading transfers for tx " + props.tx_id);
         const loadTransfers = async () => {
             if (props.tx_id) {
-                const response = await fetch(`${BACKEND_URL}/transfers/${props.tx_id}`);
+                const response = await fetch(`${config.backendUrl}/transfers/${props.tx_id}`);
                 const response_json = await response.json();
                 setTransfers(response_json);
             }
