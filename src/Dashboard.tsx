@@ -2,7 +2,7 @@ import React from "react";
 import "./Dashboard.css";
 
 import TransactionFeed from "./TransactionFeed";
-import { useConfigOrNull } from "./ConfigProvider";
+import { BACKEND_URL, useConfigOrNull } from "./ConfigProvider";
 import { Routes, Route, Link } from "react-router-dom";
 import Accounts from "./Accounts";
 import AllowanceBoxDesignTime from "./AllowanceBoxDesignTime";
@@ -14,12 +14,11 @@ const Dashboard = () => {
     if (config == null) {
         return <div>Loading...</div>;
     }
-    if (typeof config === "string"){
+    if (typeof config === "string") {
         return <div>{config}</div>;
     }
     return (
         <div>
-
             {config ? (
                 <div>
                     <div className="top-header">
@@ -42,7 +41,7 @@ const Dashboard = () => {
                                             <div className={"padding"}>
                                                 <p>
                                                     Connected to payment driver API url:{" "}
-                                                    <a href={config.backendUrl}>{config.backendUrl}</a>
+                                                    <a href={BACKEND_URL}>{BACKEND_URL}</a>
                                                 </p>
                                                 <textarea
                                                     style={{ width: 800, height: 500 }}
@@ -54,14 +53,11 @@ const Dashboard = () => {
                                     </div>
                                 }
                             />
-                            <Route path="feed" element={<TransactionFeed />}/>
-                            <Route path="accounts" element={<Accounts />}/>
-                            <Route path="allowances" element={<Allowances />}/>
-                            <Route path="balance/:account" element={<Balance />}/>
-                            <Route
-                                path="design_allowance_box"
-                                element={<AllowanceBoxDesignTime/>}
-                            />
+                            <Route path="feed" element={<TransactionFeed />} />
+                            <Route path="accounts" element={<Accounts />} />
+                            <Route path="allowances" element={<Allowances />} />
+                            <Route path="balance/:account" element={<Balance />} />
+                            <Route path="design_allowance_box" element={<AllowanceBoxDesignTime />} />
                         </Routes>
                     </div>
                 </div>
