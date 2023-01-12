@@ -1,4 +1,4 @@
-import React from "react";
+import React, { useContext } from "react";
 import "./TxBox.css";
 import DateBox from "./DateBox";
 import TransfersBox from "./TransfersBox";
@@ -10,7 +10,9 @@ import ContractDetails from "./ContractDetails";
 import TransactionDetails from "./TransactionDetails";
 import { fromWei } from "./common/Web3Utils";
 import Web3Transaction from "./model/Web3Transaction";
-import { BACKEND_URL } from "./ConfigProvider";
+
+import { BackendSettingsContext } from "./BackendSettingsProvider";
+import { backendFetch } from "./common/BackendCall";
 
 interface TransactionProps {
     tx_id: number | null;
@@ -19,6 +21,7 @@ interface TransactionProps {
 
 const TxBox = (props: TransactionProps) => {
     //let [tx, setTx] = React.useState(null);
+    const { backendSettings } = useContext(BackendSettingsContext);
 
     /*const loadTxDetails = async () => {
         if (props.tx_id) {
@@ -54,7 +57,7 @@ const TxBox = (props: TransactionProps) => {
     }
 
     function SkipTx() {
-        fetch(`${BACKEND_URL}/tx/skip/${props.tx_id}`, { method: "POST" }).then((resp) => {
+        backendFetch(backendSettings, `/tx/skip/${props.tx_id}`, { method: "POST" }).then((resp) => {
             console.log(resp);
         });
     }

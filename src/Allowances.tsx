@@ -1,7 +1,8 @@
-import React, { useCallback, useEffect } from "react";
+import React, { useCallback, useContext, useEffect } from "react";
 import AllowanceBox from "./AllowanceBox";
 import Allowance from "./model/Allowance";
-import { BACKEND_URL } from "./ConfigProvider";
+import { BackendSettingsContext } from "./BackendSettingsProvider";
+import { backendFetch } from "./common/BackendCall";
 
 interface GetAllowancesResponse {
     allowances: Allowance[];
@@ -9,9 +10,10 @@ interface GetAllowancesResponse {
 
 const Allowances = () => {
     const [allowances, setAllowances] = React.useState<GetAllowancesResponse | null>(null);
+    const { backendSettings } = useContext(BackendSettingsContext);
 
     const loadAllowances = useCallback(async () => {
-        const response = await fetch(`${BACKEND_URL}/allowances`);
+        const response = await backendFetch(backendSettings, "/allowances");
         const response_json = await response.json();
         setAllowances(response_json);
     }, []);

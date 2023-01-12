@@ -2,9 +2,10 @@ import React from "react";
 import ReactDOM from "react-dom/client";
 import "./index.css";
 import Dashboard from "./Dashboard";
-import { ConfigProvider, FRONTEND_BASE, globalSetBackendUrl } from "./ConfigProvider";
+import { ConfigProvider, FRONTEND_BASE, globalSetDefaultBackendUrl } from "./ConfigProvider";
 import { BrowserRouter } from "react-router-dom";
 import { Routes, Route } from "react-router-dom";
+import { BackendSettingsProvider } from "./BackendSettingsProvider";
 
 const rootEl = document.getElementById("root");
 if (!rootEl) {
@@ -18,17 +19,19 @@ interface FrontendConfig {
 
 fetch("/erc20/frontend/config.json").then((resp) => {
     resp.json().then((config: FrontendConfig) => {
-        globalSetBackendUrl(config.backendUrl);
+        globalSetDefaultBackendUrl(config.backendUrl);
 
         root.render(
             <React.StrictMode>
-                <ConfigProvider>
-                    <BrowserRouter basename={FRONTEND_BASE}>
-                        <Routes>
-                            <Route path="/*" element={<Dashboard />} />
-                        </Routes>
-                    </BrowserRouter>
-                </ConfigProvider>
+                <BackendSettingsProvider>
+                    <ConfigProvider>
+                        <BrowserRouter basename={FRONTEND_BASE}>
+                            <Routes>
+                                <Route path="/*" element={<Dashboard />} />
+                            </Routes>
+                        </BrowserRouter>
+                    </ConfigProvider>
+                </BackendSettingsProvider>
             </React.StrictMode>,
         );
     });

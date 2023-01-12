@@ -1,12 +1,14 @@
-import React, { useCallback, useEffect } from "react";
+import React, { useCallback, useContext, useEffect } from "react";
 import AccountBox from "./AccountBox";
 import SenderAccounts from "./model/SenderAccounts";
-import { BACKEND_URL } from "./ConfigProvider";
+import { BackendSettingsContext } from "./BackendSettingsProvider";
+
 const Accounts = () => {
     const [accounts, setAccounts] = React.useState<SenderAccounts | null>(null);
+    const { backendSettings } = useContext(BackendSettingsContext);
 
     const loadTxCount = useCallback(async () => {
-        const response = await fetch(`${BACKEND_URL}/accounts`);
+        const response = await fetch(`${backendSettings.backendUrl}/accounts`);
         const response_json = await response.json();
         setAccounts(response_json);
     }, []);

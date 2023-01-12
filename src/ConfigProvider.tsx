@@ -1,11 +1,12 @@
 import React, { createContext, useContext, useEffect, useState } from "react";
 import PaymentDriverConfig from "./model/PaymentDriverConfig";
+import { BackendSettingsContext } from "./BackendSettingsProvider";
 
-export let BACKEND_URL = "";
+export let DEFAULT_BACKEND_URL = "";
 export const FRONTEND_BASE = "/erc20/frontend/";
 
-export function globalSetBackendUrl(backendUrl: string) {
-    BACKEND_URL = backendUrl;
+export function globalSetDefaultBackendUrl(backendUrl: string) {
+    DEFAULT_BACKEND_URL = backendUrl;
 }
 
 export const ConfigContext = createContext<PaymentDriverConfig | null | string>(null);
@@ -24,16 +25,17 @@ interface ConfigProviderProps {
 
 export const ConfigProvider = (props: ConfigProviderProps) => {
     const [config, setConfig] = useState<PaymentDriverConfig | null | string>(null);
+    const { backendSettings } = useContext(BackendSettingsContext);
 
     useEffect(() => {
         (async () => {
-            setConfig(`Connecting to ${BACKEND_URL}`);
+            setConfig(`Connecting to ${backendSettings.backendUrl}`);
             try {
-                const response = await fetch(`${BACKEND_URL}/config`);
+                const response = await fetch(`${backendSettings.backendUrl}/config`);
                 const response_json = await response.json();
                 setConfig(response_json.config);
             } catch (_e) {
-                setConfig(`Failed to connect to ${BACKEND_URL}`);
+                setConfig(`Failed to connect to ${backendSettings.backendUrl}`);
             }
         })();
     }, [setConfig]);

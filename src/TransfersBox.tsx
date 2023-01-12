@@ -1,9 +1,11 @@
-import React, { useState } from "react";
+import React, { useContext, useState } from "react";
 import "./TransfersBox.css";
 import TransferBox from "./TransferBox";
-import { BACKEND_URL, useConfig } from "./ConfigProvider";
+import { useConfig } from "./ConfigProvider";
 import { fromWei } from "./common/Web3Utils";
 import TokenTransfer from "./model/TokenTransfer";
+import { BackendSettingsContext } from "./BackendSettingsProvider";
+import { backendFetch } from "./common/BackendCall";
 
 interface TransfersBoxProps {
     tx_id: number | null;
@@ -16,12 +18,13 @@ interface TransferResponse {
 const TransfersBox = (props: TransfersBoxProps) => {
     const [transfers, setTransfers] = useState<TransferResponse | null>(null);
     const config = useConfig();
+    const { backendSettings } = useContext(BackendSettingsContext);
 
     React.useEffect(() => {
         console.log("Loading transfers for tx " + props.tx_id);
         const loadTransfers = async () => {
             if (props.tx_id) {
-                const response = await fetch(`${BACKEND_URL}/transfers/${props.tx_id}`);
+                const response = await backendFetch(backendSettings, `/transfers/${props.tx_id}`);
                 const response_json = await response.json();
                 setTransfers(response_json);
             }
