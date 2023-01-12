@@ -2,7 +2,7 @@ import React, { useCallback, useContext, useEffect } from "react";
 import AccountBox from "./AccountBox";
 import SenderAccounts from "./model/SenderAccounts";
 import { BackendSettingsContext } from "./BackendSettingsProvider";
-import {backendFetch} from "./common/BackendCall";
+import { backendFetch } from "./common/BackendCall";
 
 const Accounts = () => {
     const [accounts, setAccounts] = React.useState<SenderAccounts | null>(null);

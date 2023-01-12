@@ -1,11 +1,10 @@
 import React, { createContext, useContext, useEffect, useState } from "react";
 import PaymentDriverConfig from "./model/PaymentDriverConfig";
 import { BackendSettingsContext } from "./BackendSettingsProvider";
-import {backendFetch} from "./common/BackendCall";
+import { backendFetch } from "./common/BackendCall";
 
 export let DEFAULT_BACKEND_URL = "";
 export const FRONTEND_BASE = "/erc20/frontend/";
-
 
 export function globalSetDefaultBackendUrl(backendUrl: string) {
     DEFAULT_BACKEND_URL = backendUrl;

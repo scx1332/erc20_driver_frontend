@@ -3,7 +3,7 @@ import AllowanceBox from "./AllowanceBox";
 import Allowance from "./model/Allowance";
 import AccountDetails from "./model/AccountDetails";
 import { BackendSettingsContext } from "./BackendSettingsProvider";
-import {backendFetch} from "./common/BackendCall";
+import { backendFetch } from "./common/BackendCall";
 
 interface AccountBoxProps {
     account: string | null;
