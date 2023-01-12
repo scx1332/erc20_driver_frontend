@@ -25,7 +25,7 @@ const TxBox = (props: TransactionProps) => {
 
     /*const loadTxDetails = async () => {
         if (props.tx_id) {
-            const response = await fetch(`${BACKEND_URL}/tx/${props.tx_id}`);
+            const response = await backendFetch(backendSettings, `/tx/${props.tx_id}`);
             const response_json = await response.json();
 
             setTx(response_json.tx);

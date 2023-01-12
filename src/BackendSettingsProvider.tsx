@@ -10,7 +10,7 @@ interface BackendSettingsContextType {
 
 export const BackendSettingsContext = createContext<BackendSettingsContextType>({
     backendSettings: {
-        backendUrl: DEFAULT_BACKEND_URL,
+        backendUrl: "",
         bearerToken: "",
         enableBearerToken: false,
     },

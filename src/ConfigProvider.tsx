@@ -1,9 +1,11 @@
 import React, { createContext, useContext, useEffect, useState } from "react";
 import PaymentDriverConfig from "./model/PaymentDriverConfig";
 import { BackendSettingsContext } from "./BackendSettingsProvider";
+import {backendFetch} from "./common/BackendCall";
 
 export let DEFAULT_BACKEND_URL = "";
 export const FRONTEND_BASE = "/erc20/frontend/";
+
 
 export function globalSetDefaultBackendUrl(backendUrl: string) {
     DEFAULT_BACKEND_URL = backendUrl;
@@ -31,7 +33,7 @@ export const ConfigProvider = (props: ConfigProviderProps) => {
         (async () => {
             setConfig(`Connecting to ${backendSettings.backendUrl}`);
             try {
-                const response = await fetch(`${backendSettings.backendUrl}/config`);
+                const response = await backendFetch(backendSettings, "/config");
                 const response_json = await response.json();
                 setConfig(response_json.config);
             } catch (_e) {

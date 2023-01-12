@@ -3,6 +3,7 @@ import AllowanceBox from "./AllowanceBox";
 import Allowance from "./model/Allowance";
 import AccountDetails from "./model/AccountDetails";
 import { BackendSettingsContext } from "./BackendSettingsProvider";
+import {backendFetch} from "./common/BackendCall";
 
 interface AccountBoxProps {
     account: string | null;
@@ -13,7 +14,7 @@ const AccountBox = (props: AccountBoxProps) => {
     const { backendSettings } = useContext(BackendSettingsContext);
 
     const loadAccountDetails = useCallback(async () => {
-        const response = await fetch(`${backendSettings.backendUrl}/account/${props.account}`);
+        const response = await backendFetch(backendSettings, `/account/${props.account}`);
         const response_json = await response.json();
         setAccount(response_json);
     }, [props.account]);
