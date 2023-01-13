@@ -28,18 +28,31 @@ export const ConfigProvider = (props: ConfigProviderProps) => {
     const [config, setConfig] = useState<PaymentDriverConfig | null | string>(null);
     const { backendSettings } = useContext(BackendSettingsContext);
 
+
     useEffect(() => {
         (async () => {
             setConfig(`Connecting to ${backendSettings.backendUrl}`);
+            let responseErr = null;
+            let responseBody = null;
             try {
                 const response = await backendFetch(backendSettings, "/config");
-                const response_json = await response.json();
+                if (response.type === "opaque") {
+                    setConfig(`Failed to connect to ${backendSettings.backendUrl} due to CORS policy`);
+                    return;
+                }
+                responseErr = response;
+                responseBody = await response.text();
+                const response_json = JSON.parse(responseBody);
                 setConfig(response_json.config);
             } catch (_e) {
+                console.log("Error fetching config", responseErr);
+                if (responseBody) {
+                    console.log("Response body: ", responseBody);
+                }
                 setConfig(`Failed to connect to ${backendSettings.backendUrl}`);
             }
         })();
-    }, [setConfig]);
+    }, [setConfig, backendSettings]);
 
     return <ConfigContext.Provider value={config}>{props.children}</ConfigContext.Provider>;
 };

@@ -12,8 +12,12 @@ export function backendFetch(backendSettings: BackendSettings, uri: string, para
     const body = params?.body;
 
     let url = uri;
-    if (url.startsWith("/")) {
-        url = (backendSettings.backendUrl + uri).replace("//", "/");
+    if (uri.startsWith("/")) {
+        if (backendSettings.backendUrl.endsWith("/")) {
+            url = backendSettings.backendUrl + uri.substring(1);
+        } else {
+            url = backendSettings.backendUrl + uri;
+        }
     } else {
         throw new Error("Uri must start with /");
     }
@@ -24,6 +28,7 @@ export function backendFetch(backendSettings: BackendSettings, uri: string, para
     if (body) {
         headers.append("Content-Type", "application/json");
     }
+    console.log("Calling backend: " + url);
 
     return fetch(url, {
         method: method,
