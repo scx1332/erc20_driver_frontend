@@ -1,4 +1,3 @@
-
 interface ChainTransfer {
     id: number;
     chainId: number;

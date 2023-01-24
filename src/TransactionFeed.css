@@ -3,11 +3,11 @@ table.transactions {
     border-collapse: collapse;
 }
 
-table.transactions td, table.transactions th {
+table.transactions td,
+table.transactions th {
     border: 1px solid #ddd;
     padding: 2px;
     font-size: 10px;
-
 }
 div.tx-33 {
     padding: 5px;
@@ -15,6 +15,6 @@ div.tx-33 {
 }
 
 div.tx-wrapper {
-    transition: all 1.0s;
+    transition: all 1s;
     overflow: hidden;
 }

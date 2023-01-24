@@ -1,22 +1,22 @@
-import React from 'react';
-import {useConfig} from "./ConfigProvider";
+import React from "react";
+import { useConfig } from "./ConfigProvider";
 import ChainSetup from "./model/ChainSetup";
-import {FiExternalLink} from "react-icons/fi";
+import { FiExternalLink } from "react-icons/fi";
 import "./ContractDetails.css";
 
 interface ContractDetailsProps {
-    chainId: string | null,
-    contractAddress: string | null,
-    isAddress: boolean | string,
+    chainId: number | string;
+    contractAddress: string | null;
+    isAddress: boolean | string;
 }
 
 const ContractDetails = (props: ContractDetailsProps) => {
-    const [config] = useConfig();
+    const config = useConfig();
 
-    let chainId = parseInt(props.chainId);
-    let chainSetup: ChainSetup = config.chainSetup[chainId];
+    const chainId = typeof props.chainId === "string" ? parseInt(props.chainId) : props.chainId;
+    const chainSetup: ChainSetup = config.chainSetup[chainId];
     if (!chainSetup) {
-        return (<span>No {chainId} in config</span>)
+        return <span>No {chainId} in config</span>;
     }
     let contractString = props.contractAddress;
     let contractTitle = `contract id: ${props.contractAddress}`;
@@ -37,12 +37,12 @@ const ContractDetails = (props: ContractDetailsProps) => {
     return (
         <a href={chainSetup.blockExplorerUrl} title={contractTitle}>
             <div className={"contract-details-contract"}>
-                <FiExternalLink className={"contract-details-contract-icon"}/>
+                <FiExternalLink className={"contract-details-contract-icon"} />
 
                 <div className={"contract-details-contract-name"}>{contractString}</div>
             </div>
         </a>
-    )
-}
+    );
+};
 
 export default ContractDetails;

@@ -1,23 +1,21 @@
-import React, {useCallback, useEffect} from "react";
-import {Simulate} from "react-dom/test-utils";
-import {BACKEND_URL} from "./ConfigProvider";
-import TransferBox from "./TransferBox";
+import React, { useCallback, useContext, useEffect } from "react";
 import AccountBox from "./AccountBox";
-
-
+import SenderAccounts from "./model/SenderAccounts";
+import { BackendSettingsContext } from "./BackendSettingsProvider";
+import { backendFetch } from "./common/BackendCall";
 
 const Accounts = () => {
-    const [accounts, setAccounts] = React.useState(null);
+    const [accounts, setAccounts] = React.useState<SenderAccounts | null>(null);
+    const { backendSettings } = useContext(BackendSettingsContext);
 
     const loadTxCount = useCallback(async () => {
-        const response = await fetch(`${BACKEND_URL}/accounts`);
+        const response = await backendFetch(backendSettings, "/accounts");
         const response_json = await response.json();
         setAccounts(response_json);
     }, []);
 
-
-    function row(account: any, i: any) {
-        return (<AccountBox key={i} account={account}/>)
+    function row(account: string, i: number) {
+        return <AccountBox key={i} account={account} />;
     }
 
     useEffect(() => {
@@ -29,7 +27,7 @@ const Accounts = () => {
             {accounts?.publicAddr.map(row)}
             {JSON.stringify(accounts)}
         </div>
-    )
-}
+    );
+};
 
 export default Accounts;

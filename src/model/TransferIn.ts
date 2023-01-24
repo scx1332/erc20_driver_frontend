@@ -1,4 +1,3 @@
-
 interface TransferIn {
     id: number;
     chainId: number;

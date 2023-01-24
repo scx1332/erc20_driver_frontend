@@ -30,7 +30,7 @@ div.allowance-box-body div.allowance-spender-descr span {
 div.allowance-box-body div.allowance-owner {
     position: absolute;
     left: 12em;
-    top: 3.0em;
+    top: 3em;
 }
 div.allowance-box-body div.allowance-owner-descr {
     position: absolute;
@@ -44,7 +44,7 @@ div.allowance-box-body div.allowance-owner-descr span {
 div.allowance-box-body div.allowance-token-addr {
     position: absolute;
     left: 12em;
-    top: 6.0em;
+    top: 6em;
 }
 
 div.allowance-box-body div.allowance-allowance {
@@ -71,10 +71,5 @@ div.allowance-box-body div.allowance-confirm-date {
 
 div.allowance-box-body div.allowance-tx-id {
     position: absolute;
-    top: 7.0em;
+    top: 7em;
 }
-
-
-
-
-

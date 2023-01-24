@@ -1,51 +1,42 @@
 {
-  "name": "erc20-driver-frontend",
-  "version": "0.1.0",
-  "homepage": ".",
-  "private": true,
-  "dependencies": {
-    "@types/jest": "^28.1.7",
-    "@types/node": "^18.7.9",
-    "@types/react": "^18.0.17",
-    "@types/react-dom": "^18.0.6",
-    "@types/react-plotly.js": "^2.5.1",
-    "@types/luxon": "^3.0.0",
-    "plotly.js-dist-min": "^2.12.1",
-    "react": "^18.2.0",
-    "react-dom": "^18.2.0",
-    "react-router": "^6.3.0",
-    "react-router-dom": "^6.3.0",
-    "react-plotly.js": "^2.5.1",
-    "react-scripts": "^5.0.1",
-    "typescript": "^4.7.4",
-    "luxon": "^3.0.1",
-    "react-loading-icons": "1.1.0",
-    "react-icons": "^4.7.1",
-    "web3": "1.8.1"
-  },
-  "scripts": {
-    "start": "react-scripts start",
-    "build": "react-scripts build",
-    "test": "react-scripts test",
-    "eject": "react-scripts eject",
-    "lint": "eslint src/**/*.{js,jsx,ts,tsx,json}"
-  },
-  "eslintConfig": {
-    "extends": [
-      "react-app",
-      "react-app/jest"
-    ]
-  },
-  "browserslist": {
-    "production": [
-      ">0.2%",
-      "not dead",
-      "not op_mini all"
-    ],
-    "development": [
-      "last 1 chrome version",
-      "last 1 firefox version",
-      "last 1 safari version"
-    ]
-  }
+    "name": "erc20-driver-frontend",
+    "version": "0.1.0",
+    "homepage": ".",
+    "private": true,
+    "dependencies": {
+        "luxon": "^3.0",
+        "react": "^18.2",
+        "react-dom": "^18.2",
+        "react-icons": "^4.7",
+        "react-loading-icons": "^1.1",
+        "react-router": "^6.3",
+        "react-router-dom": "^6.3"
+    },
+    "devDependencies": {
+        "@typescript-eslint/eslint-plugin": "^5.48",
+        "@typescript-eslint/parser": "^5.48",
+        "eslint-config-prettier": "^8.6",
+        "eslint-plugin-import": "^2.26",
+        "eslint-plugin-jsx-a11y": "^6.6",
+        "eslint-plugin-react": "^7.31",
+        "@types/jest": "^28.1",
+        "@types/luxon": "^3.0",
+        "@types/node": "^18.7",
+        "@types/react": "^18.0",
+        "@types/react-dom": "^18.0",
+        "@types/react-plotly.js": "^2.5",
+        "@vitejs/plugin-react-swc": "^3.0",
+        "eslint": "^8.31",
+        "typescript": "^4.9",
+        "vite": "^4.0",
+        "prettier": "^2.8"
+    },
+    "scripts": {
+        "dev": "vite",
+        "check": "tsc",
+        "build": "tsc && vite build",
+        "preview": "vite preview",
+        "lint": "eslint . --ext .ts,.tsx",
+        "prettier": "prettier --write ."
+    }
 }
