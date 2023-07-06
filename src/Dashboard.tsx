@@ -10,6 +10,7 @@ import Allowances from "./Allowances";
 import Balance from "./Balance";
 import BackendSettings from "./BackendSettings";
 import { BackendSettingsContext } from "./BackendSettingsProvider";
+import AccountDetails from "./model/AccountDetails";
 
 const Dashboard = () => {
     const config = useConfigOrNull();
@@ -38,6 +39,7 @@ const Dashboard = () => {
                         <Link to="/accounts">Accounts</Link>
                         <Link to="/allowances">Allowances</Link>
                         <Link to="/balance/0x0000000600000006000000060000000600000006">Balance</Link>
+                        <Link to="/backend_settings">Settings</Link>
                     </div>
                 </div>
                 <div className="main-content">
@@ -67,6 +69,7 @@ const Dashboard = () => {
                         <Route path="allowances" element={<Allowances />} />
                         <Route path="balance/:account" element={<Balance />} />
                         <Route path="design_allowance_box" element={<AllowanceBoxDesignTime />} />
+                        <Route path="backend_settings" element={<BackendSettings />} />
                     </Routes>
                 </div>
             </div>

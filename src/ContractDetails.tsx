@@ -34,8 +34,10 @@ const ContractDetails = (props: ContractDetailsProps) => {
         contractString = `${chainSetup.currencyGlmSymbol} token`;
     }
 
+    const url = `${chainSetup.blockExplorerUrl}/address/${props.contractAddress}`
+
     return (
-        <a href={chainSetup.blockExplorerUrl} title={contractTitle}>
+        <a href={url} title={contractTitle}>
             <div className={"contract-details-contract"}>
                 <FiExternalLink className={"contract-details-contract-icon"} />
 

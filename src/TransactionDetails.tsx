@@ -17,9 +17,10 @@ const TransactionDetails = (props: TransactionDetailsProps) => {
     if (!chainSetup) {
         return <span>No {chainId} in config</span>;
     }
+    const url = `${chainSetup.blockExplorerUrl}/tx/${props.transactionHash}`;
 
     return (
-        <a href={chainSetup.blockExplorerUrl} title={`Transaction hash: ${props.transactionHash}`}>
+        <a href={url} title={`Transaction hash: ${props.transactionHash}`}>
             <div className={"transaction-details-transaction"}>
                 <FiExternalLink className={"transaction-details-transaction-icon"} />
 
